@@ -43,10 +43,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
 
   const setView = (view: ProductViewMode) => onChange({ view });
 
-  const handlePriceChange = (
-    field: "minPrice" | "maxPrice",
-    value: string,
-  ) => {
+  const handlePriceChange = (field: "minPrice" | "maxPrice", value: string) => {
     if (value === "") {
       onChange({ [field]: "" });
       return;
@@ -82,7 +79,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
             onChange={(e) => setSearchInput(e.target.value)}
             aria-describedby="search-hint"
           />
-          <span id="search-hint" className="sr-only">
+          <span id="search-hint" className={styles.screenReaderOnly}>
             Rezultati se ažuriraju nakon pauze u unosu
           </span>
         </div>
