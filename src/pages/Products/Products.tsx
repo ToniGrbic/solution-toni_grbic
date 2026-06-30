@@ -1,0 +1,81 @@
+import { PAGE_SIZE } from "@/api/products";
+import { ProductGridSkeleton, StateMessage } from "@/components/common";
+import {
+  Pagination,
+  ProductCard,
+  ProductFilters,
+  ProductTable,
+} from "@/components/products";
+import { useProductFilters } from "@/hooks/useProductFilters";
+import { useProducts } from "@/hooks/useProducts";
+import { useScrollRestoration } from "@/hooks/useScrollRestoration";
+import type { Product } from "@/types/product";
+import clsx from "clsx";
+import styles from "./index.module.scss";
+
+const Products = () => {
+  useScrollRestoration();
+  const { filters, setFilters } = useProductFilters();
+  const { data, isLoading, isError, isFetching, refetch } =
+    useProducts(filters);
+
+  const products = data?.products ?? [];
+  const total = data?.total ?? 0;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  const showInitialLoading = isLoading && !data;
+
+  return (
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Proizvodi</h1>
+        <p className={styles.subtitle}>
+          Pregledajte katalog proizvoda s filtriranjem i pretragom
+        </p>
+      </header>
+
+      <ProductFilters filters={filters} onChange={setFilters} />
+
+      {showInitialLoading && <ProductGridSkeleton />}
+
+      {isError && <StateMessage.Error onRetry={refetch} />}
+
+      {!showInitialLoading && !isError && products.length === 0 && (
+        <StateMessage.Empty message="Nijedan proizvod ne odgovara odabranim filterima. Pokušajte promijeniti kriterije pretrage." />
+      )}
+
+      {!isError && products.length > 0 && (
+        <>
+          <p className={styles.resultsInfo} aria-live="polite">
+            Prikazano {products.length} od {total} proizvoda
+            {isFetching && !isLoading && " (ažuriranje…)"}
+          </p>
+
+          <div
+            className={clsx(isFetching && !isLoading && styles.loadingOverlay)}
+          >
+            {filters.view === "grid" ? (
+              <ul className={styles.grid} aria-label="Lista proizvoda">
+                {products.map((product: Product) => (
+                  <li key={product.id}>
+                    <ProductCard product={product} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ProductTable products={products} />
+            )}
+          </div>
+
+          <Pagination
+            page={filters.page}
+            totalPages={totalPages}
+            onPageChange={(page) => setFilters({ page })}
+          />
+        </>
+      )}
+    </div>
+  );
+};
+
+export default Products;
