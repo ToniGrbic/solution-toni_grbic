@@ -1,4 +1,4 @@
-import ProtectedRoute from "@/components/auth/ProtectedRoute";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import Layout from "@/components/layout/Layout";
 import Favorites from "@/pages/Favorites";
 import Login from "@/pages/Login";
