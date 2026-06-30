@@ -1,0 +1,129 @@
+// Light theme (default)
+$color-bg: #f8f9fb;
+$color-surface: #ffffff;
+$color-surface-muted: #f3f4f6;
+$color-text: #1a1d26;
+$color-text-muted: #5c6370;
+$color-border: #e2e5eb;
+$color-image-placeholder: #eef0f4;
+$color-skeleton-highlight: #eef0f4;
+$color-primary: #2563eb;
+$color-primary-hover: #1d4ed8;
+$color-primary-subtle: rgb(37 99 235 / 8%);
+$color-primary-subtle-hover: rgb(37 99 235 / 4%);
+$color-primary-ring: rgb(37 99 235 / 15%);
+$color-on-primary: #ffffff;
+$color-danger: #dc2626;
+$color-danger-subtle: rgb(220 38 38 / 8%);
+$color-danger-border: rgb(220 38 38 / 30%);
+$color-danger-surface: rgb(220 38 38 / 4%);
+$color-success: #16a34a;
+$color-warning: #d97706;
+$color-focus: #93c5fd;
+$shadow-sm: 0 1px 3px rgb(0 0 0 / 8%);
+$shadow-md: 0 4px 12px rgb(0 0 0 / 10%);
+
+// Dark theme
+$color-bg-dark: #0f1117;
+$color-surface-dark: #1a1d26;
+$color-surface-muted-dark: #252830;
+$color-text-dark: #f1f3f6;
+$color-text-muted-dark: #9aa3b2;
+$color-border-dark: #2e3340;
+$color-image-placeholder-dark: #2a2e38;
+$color-skeleton-highlight-dark: #353a47;
+$color-primary-dark: #3b82f6;
+$color-primary-hover-dark: #60a5fa;
+$color-primary-subtle-dark: rgb(59 130 246 / 12%);
+$color-primary-subtle-hover-dark: rgb(59 130 246 / 8%);
+$color-primary-ring-dark: rgb(59 130 246 / 25%);
+$color-on-primary-dark: #ffffff;
+$color-danger-dark: #f87171;
+$color-danger-subtle-dark: rgb(248 113 113 / 12%);
+$color-danger-border-dark: rgb(248 113 113 / 35%);
+$color-danger-surface-dark: rgb(248 113 113 / 8%);
+$color-success-dark: #4ade80;
+$color-warning-dark: #fbbf24;
+$color-focus-dark: #60a5fa;
+$shadow-sm-dark: 0 1px 3px rgb(0 0 0 / 35%);
+$shadow-md-dark: 0 4px 12px rgb(0 0 0 / 45%);
+
+// Shared layout tokens
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$container-max: 1200px;
+$header-height: 64px;
+$space-xs: 0.25rem;
+$space-sm: 0.5rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+:root {
+  color-scheme: light;
+
+  --color-bg: #{$color-bg};
+  --color-surface: #{$color-surface};
+  --color-surface-muted: #{$color-surface-muted};
+  --color-text: #{$color-text};
+  --color-text-muted: #{$color-text-muted};
+  --color-border: #{$color-border};
+  --color-image-placeholder: #{$color-image-placeholder};
+  --color-skeleton-highlight: #{$color-skeleton-highlight};
+  --color-primary: #{$color-primary};
+  --color-primary-hover: #{$color-primary-hover};
+  --color-primary-subtle: #{$color-primary-subtle};
+  --color-primary-subtle-hover: #{$color-primary-subtle-hover};
+  --color-primary-ring: #{$color-primary-ring};
+  --color-on-primary: #{$color-on-primary};
+  --color-danger: #{$color-danger};
+  --color-danger-subtle: #{$color-danger-subtle};
+  --color-danger-border: #{$color-danger-border};
+  --color-danger-surface: #{$color-danger-surface};
+  --color-success: #{$color-success};
+  --color-warning: #{$color-warning};
+  --color-focus: #{$color-focus};
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --container-max: #{$container-max};
+  --header-height: #{$header-height};
+  --space-xs: #{$space-xs};
+  --space-sm: #{$space-sm};
+  --space-md: #{$space-md};
+  --space-lg: #{$space-lg};
+  --space-xl: #{$space-xl};
+  --font-sans: #{$font-sans};
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-bg: #{$color-bg-dark};
+  --color-surface: #{$color-surface-dark};
+  --color-surface-muted: #{$color-surface-muted-dark};
+  --color-text: #{$color-text-dark};
+  --color-text-muted: #{$color-text-muted-dark};
+  --color-border: #{$color-border-dark};
+  --color-image-placeholder: #{$color-image-placeholder-dark};
+  --color-skeleton-highlight: #{$color-skeleton-highlight-dark};
+  --color-primary: #{$color-primary-dark};
+  --color-primary-hover: #{$color-primary-hover-dark};
+  --color-primary-subtle: #{$color-primary-subtle-dark};
+  --color-primary-subtle-hover: #{$color-primary-subtle-hover-dark};
+  --color-primary-ring: #{$color-primary-ring-dark};
+  --color-on-primary: #{$color-on-primary-dark};
+  --color-danger: #{$color-danger-dark};
+  --color-danger-subtle: #{$color-danger-subtle-dark};
+  --color-danger-border: #{$color-danger-border-dark};
+  --color-danger-surface: #{$color-danger-surface-dark};
+  --color-success: #{$color-success-dark};
+  --color-warning: #{$color-warning-dark};
+  --color-focus: #{$color-focus-dark};
+  --shadow-sm: #{$shadow-sm-dark};
+  --shadow-md: #{$shadow-md-dark};
+}
