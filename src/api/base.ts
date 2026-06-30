@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Routes as AppRoutes } from "@/types/enums";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -22,8 +23,15 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-  (response) => response,
-  (error) => Promise.reject(error),
+  (response) => response.data,
+  (error) => {
+    if (error.response.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = AppRoutes.LOGIN;
+    }
+    return Promise.reject(error);
+  },
 );
 
 export default api;
