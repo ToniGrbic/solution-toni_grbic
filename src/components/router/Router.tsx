@@ -1,3 +1,4 @@
+import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import Layout from "@/components/layout/Layout";
 import Favorites from "@/pages/Favorites";
 import Login from "@/pages/Login";
@@ -6,7 +7,6 @@ import ProductDetail from "@/pages/ProductDetail";
 import Products from "@/pages/Products";
 import { Routes as AppRoutes } from "@/types/enums";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
-import ProtectedRoute from "../auth/ProtectedRoute";
 
 const Router = () => {
   return (
