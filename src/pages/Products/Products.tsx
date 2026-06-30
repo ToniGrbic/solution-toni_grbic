@@ -1,4 +1,4 @@
-import { PAGE_SIZE } from "@/api/products";
+import { PAGE_SIZE } from "@/constants";
 import { ProductGridSkeleton, StateMessage } from "@/components/common";
 import {
   Pagination,

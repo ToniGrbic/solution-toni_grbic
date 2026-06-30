@@ -1,4 +1,4 @@
-import { FAVORITES_KEY } from "@/constants/storageKeys";
+import { FAVORITES_KEY } from "@/constants";
 import { toggleFavorite as toggleStored } from "@/utils/storage";
 import { useCallback, useSyncExternalStore } from "react";
 

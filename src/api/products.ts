@@ -4,10 +4,7 @@ import type {
   ProductsResponse,
 } from "@/types/product";
 import api from "./base";
-
-const PAGE_SIZE = 12;
-
-export { PAGE_SIZE };
+import { PAGE_SIZE } from "@/constants";
 
 export const fetchProducts = async (
   skip: number,

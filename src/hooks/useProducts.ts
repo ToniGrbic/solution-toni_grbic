@@ -3,10 +3,9 @@ import {
   fetchProductById,
   fetchProducts,
   fetchProductsByCategory,
-  PAGE_SIZE,
   searchProducts,
 } from "@/api/products";
-import { productKeys } from "@/constants/queryKeys";
+import { PAGE_SIZE, productKeys } from "@/constants";
 import type { Product, ProductFilters } from "@/types/product";
 import { parseOptionalNumber } from "@/utils/helpers";
 import { useQuery } from "@tanstack/react-query";

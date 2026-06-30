@@ -1,6 +1,5 @@
+import { THEME_KEY } from "@/constants";
 import { Theme } from "@/types/enums";
-import { THEME_KEY } from "@/constants/storageKeys";
-
 
 export const getStoredTheme = (): Theme | null => {
   const stored = localStorage.getItem(THEME_KEY);

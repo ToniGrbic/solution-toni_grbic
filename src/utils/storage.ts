@@ -1,13 +1,13 @@
-import { FAVORITES_KEY, TOKEN_KEY, USER_KEY } from "@/constants/storageKeys";
+import { FAVORITES_KEY, TOKEN_KEY, USER_KEY } from "@/constants";
 import type { AuthUserResponse } from "@/types/auth";
 
 export const getStoredToken = (): string | null =>
   localStorage.getItem(TOKEN_KEY);
 
-export const getStoredUser = (): string | null => localStorage.getItem(USER_KEY);
+export const getStoredUser = (): string | null =>
+  localStorage.getItem(USER_KEY);
 
 export const setAuthStorage = (user: AuthUserResponse): void => {
-
   const { accessToken, refreshToken, ...userData } = user;
   localStorage.setItem(TOKEN_KEY, accessToken);
   localStorage.setItem(USER_KEY, JSON.stringify(userData));
@@ -40,5 +40,4 @@ export const toggleFavorite = (id: number): number[] => {
   return next;
 };
 
-export const isFavorite = (id: number): boolean =>
-  getFavorites().includes(id);
+export const isFavorite = (id: number): boolean => getFavorites().includes(id);
