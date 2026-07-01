@@ -9,7 +9,12 @@ type PaginationProps = {
   label: string;
 };
 
-const Pagination = ({ page, totalPages, onPageChange, label }: PaginationProps) => {
+const Pagination = ({
+  page,
+  totalPages,
+  onPageChange,
+  label,
+}: PaginationProps) => {
   if (totalPages <= 1) return null;
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
