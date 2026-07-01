@@ -1,8 +1,8 @@
 import { Button, StateMessage } from "@/components/common";
 import ImageGallery from "@/components/products/ImageGallery";
 import { useAuth } from "@/context/AuthProvider";
+import { useProduct } from "@/hooks/api/useProduct";
 import { useFavorites } from "@/hooks/useFavorites";
-import { useProduct } from "@/hooks/useProducts";
 import { ButtonVariant, Routes } from "@/types/enums";
 import { formatPrice } from "@/utils/helpers";
 import clsx from "clsx";
@@ -26,12 +26,7 @@ const ProductDetail = () => {
   const { isAuthenticated } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
 
-  const {
-    data: product,
-    isLoading,
-    isError,
-    refetch,
-  } = useProduct(productId);
+  const { data: product, isLoading, isError, refetch } = useProduct(productId);
 
   const handleFavorite = () => {
     toggleFavorite(product.id);

@@ -1,5 +1,5 @@
+import { useCategories } from "@/hooks/api/useCategories";
 import { useDebounce } from "@/hooks/useDebounce";
-import { useCategories } from "@/hooks/useProducts";
 import type {
   ProductFilters as Filters,
   ProductViewMode,

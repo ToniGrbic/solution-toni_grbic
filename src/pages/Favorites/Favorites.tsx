@@ -1,7 +1,7 @@
 import { ProductGridSkeleton, StateMessage } from "@/components/common";
-import ProductCard from "@/components/products/ProductCard";
+import ProductCard from "@/components/common/ProductCard";
+import { useFavoriteProducts } from "@/hooks/api/useFavoriteProducts";
 import { useFavorites } from "@/hooks/useFavorites";
-import { useFavoriteProducts } from "@/hooks/useProducts";
 import styles from "./index.module.scss";
 
 const Favorites = () => {
