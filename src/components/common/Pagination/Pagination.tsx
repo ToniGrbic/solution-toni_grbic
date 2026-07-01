@@ -5,9 +5,10 @@ type PaginationProps = {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  label: string;
 };
 
-const Pagination = ({ page, totalPages, onPageChange }: PaginationProps) => {
+const Pagination = ({ page, totalPages, onPageChange, label }: PaginationProps) => {
   if (totalPages <= 1) return null;
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -16,7 +17,7 @@ const Pagination = ({ page, totalPages, onPageChange }: PaginationProps) => {
   );
 
   return (
-    <nav className={styles.pagination} aria-label="Paginacija proizvoda">
+    <nav className={styles.pagination} aria-label={label}>
       <button
         type="button"
         className={styles.btn}

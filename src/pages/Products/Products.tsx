@@ -1,13 +1,13 @@
-import { PAGE_SIZE } from "@/constants";
-import { ProductGridSkeleton, StateMessage } from "@/components/common";
 import {
-  Pagination,
   ProductCard,
-  ProductFilters,
-  ProductTable,
-} from "@/components/products";
+  ProductGridSkeleton,
+  StateMessage,
+  Pagination,
+} from "@/components/common";
+import { ProductFilters, ProductTable } from "@/components/products";
+import { PAGE_SIZE } from "@/constants";
+import { useProducts } from "@/hooks/api/useProducts";
 import { useProductFilters } from "@/hooks/useProductFilters";
-import { useProducts } from "@/hooks/useProducts";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import type { Product } from "@/types/product";
 import clsx from "clsx";
@@ -71,6 +71,7 @@ const Products = () => {
             page={filters.page}
             totalPages={totalPages}
             onPageChange={(page) => setFilters({ page })}
+            label="Paginacija proizvoda"
           />
         </>
       )}
