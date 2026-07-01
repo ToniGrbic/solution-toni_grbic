@@ -1,3 +1,4 @@
+import { Button, Input, Select } from "@/components/common";
 import { useCategories } from "@/hooks/api/useCategories";
 import { useDebounce } from "@/hooks/useDebounce";
 import type {
@@ -66,76 +67,53 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
   return (
     <section className={styles.filters} aria-label="Filteri proizvoda">
       <div className={styles.row}>
-        <div className={styles.field}>
-          <label className={styles.label} htmlFor="search">
-            Pretraga
-          </label>
-          <input
-            id="search"
-            type="search"
-            className={styles.input}
-            placeholder="Pretraži po nazivu…"
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            aria-describedby="search-hint"
-          />
-          <span id="search-hint" className={styles.screenReaderOnly}>
-            Rezultati se ažuriraju nakon pauze u unosu
-          </span>
-        </div>
+        <Input
+          id="search"
+          label="Pretraga"
+          type="search"
+          placeholder="Pretraži po nazivu…"
+          hint="Rezultati se ažuriraju nakon pauze u unosu"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
 
-        <div className={styles.field}>
-          <label className={styles.label} htmlFor="category">
-            Kategorija
-          </label>
-          <select
-            id="category"
-            className={styles.select}
-            value={filters.category}
-            onChange={(e) => onChange({ category: e.target.value })}
-          >
-            <option value="">Sve kategorije</option>
-            {categories.map((category) => (
-              <option key={category.slug} value={category.slug}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </div>
+        <Select
+          id="category"
+          label="Kategorija"
+          value={filters.category}
+          onChange={(e) => onChange({ category: e.target.value })}
+        >
+          <option value="">Sve kategorije</option>
+          {categories.map((category) => (
+            <option key={category.slug} value={category.slug}>
+              {category.name}
+            </option>
+          ))}
+        </Select>
 
-        <div className={styles.field}>
-          <label className={styles.label} htmlFor="minPrice">
-            Min. cijena
-          </label>
-          <input
-            id="minPrice"
-            type="number"
-            min={0}
-            step={0.01}
-            className={styles.input}
-            placeholder="0"
-            value={filters.minPrice}
-            onChange={(e) => handlePriceChange("minPrice", e.target.value)}
-            onKeyDown={blockNegativeKey}
-          />
-        </div>
+        <Input
+          id="minPrice"
+          label="Min. cijena"
+          type="number"
+          min={0}
+          step={0.01}
+          placeholder="0"
+          value={filters.minPrice}
+          onChange={(e) => handlePriceChange("minPrice", e.target.value)}
+          onKeyDown={blockNegativeKey}
+        />
 
-        <div className={styles.field}>
-          <label className={styles.label} htmlFor="maxPrice">
-            Max. cijena
-          </label>
-          <input
-            id="maxPrice"
-            type="number"
-            min={0}
-            step={0.01}
-            className={styles.input}
-            placeholder="9999"
-            value={filters.maxPrice}
-            onChange={(e) => handlePriceChange("maxPrice", e.target.value)}
-            onKeyDown={blockNegativeKey}
-          />
-        </div>
+        <Input
+          id="maxPrice"
+          label="Max. cijena"
+          type="number"
+          min={0}
+          step={0.01}
+          placeholder="9999"
+          value={filters.maxPrice}
+          onChange={(e) => handlePriceChange("maxPrice", e.target.value)}
+          onKeyDown={blockNegativeKey}
+        />
       </div>
 
       <div className={styles.toolbar}>
@@ -144,32 +122,35 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
           role="group"
           aria-label="Način prikaza"
         >
-          <button
+          <Button
+            unstyled
             type="button"
             className={styles.viewBtn}
             aria-pressed={filters.view === "grid"}
             onClick={() => setView("grid")}
           >
             Kartice
-          </button>
-          <button
+          </Button>
+          <Button
+            unstyled
             type="button"
             className={styles.viewBtn}
             aria-pressed={filters.view === "table"}
             onClick={() => setView("table")}
           >
             Tablica
-          </button>
+          </Button>
         </div>
 
         {hasActiveFilters && (
-          <button
+          <Button
+            unstyled
             type="button"
             className={styles.clearBtn}
             onClick={handleClear}
           >
             Očisti filtere
-          </button>
+          </Button>
         )}
       </div>
     </section>

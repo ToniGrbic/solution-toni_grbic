@@ -3,6 +3,7 @@ export { default as Input } from "./Input";
 export { default as LoadingSpinner } from "./LoadingSpinner";
 export { default as Pagination } from "./Pagination";
 export { default as ProductCard } from "./ProductCard";
+export { default as Select } from "./Select";
 export {
   ProductCardSkeleton,
   ProductGridSkeleton,

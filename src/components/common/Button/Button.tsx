@@ -6,21 +6,23 @@ import styles from "./Button.module.scss";
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
   fullWidth?: boolean;
+  unstyled?: boolean;
   children: ReactNode;
 };
 
 const Button = ({
   variant = ButtonVariant.PRIMARY,
   fullWidth = false,
+  unstyled = false,
   className,
   children,
   ...props
 }: ButtonProps) => (
   <button
     className={clsx(
-      styles.base,
-      styles[variant],
-      fullWidth && styles.fullWidth,
+      !unstyled && styles.base,
+      !unstyled && styles[variant],
+      !unstyled && fullWidth && styles.fullWidth,
       className,
     )}
     {...props}
