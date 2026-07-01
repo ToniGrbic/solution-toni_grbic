@@ -19,7 +19,7 @@ const Pagination = ({
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
   const visiblePages = pages.filter(
-    (p) => p === 1 || p === totalPages || Math.abs(p - page) <= 1,
+    (p) => p === 1 || p === totalPages || Math.abs(p - page) <= 0,
   );
 
   return (
