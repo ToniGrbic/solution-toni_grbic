@@ -1,3 +1,4 @@
+import Button from "@/components/common/Button";
 import { useAuth } from "@/context/AuthProvider";
 import { useFavorites } from "@/hooks/useFavorites";
 import { Routes } from "@/types/enums";
@@ -61,7 +62,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <div className={styles.footer}>
             <span className={styles.price}>{formatPrice(product.price)}</span>
             {isAuthenticated && (
-              <button
+              <Button
+                unstyled
                 type="button"
                 className={clsx(styles.favorite, favorited && styles.active)}
                 onClick={handleFavorite}
@@ -73,7 +75,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 aria-pressed={favorited}
               >
                 {favorited ? "♥" : "♡"}
-              </button>
+              </Button>
             )}
           </div>
         </div>

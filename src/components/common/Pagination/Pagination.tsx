@@ -1,3 +1,4 @@
+import Button from "@/components/common/Button";
 import clsx from "clsx";
 import styles from "./Pagination.module.scss";
 
@@ -18,15 +19,15 @@ const Pagination = ({ page, totalPages, onPageChange, label }: PaginationProps) 
 
   return (
     <nav className={styles.pagination} aria-label={label}>
-      <button
-        type="button"
+      <Button
+        unstyled
         className={styles.btn}
         onClick={() => onPageChange(page - 1)}
         disabled={page <= 1}
         aria-label="Prethodna stranica"
       >
         ←
-      </button>
+      </Button>
 
       {visiblePages.map((p, index) => {
         const prev = visiblePages[index - 1];
@@ -39,28 +40,28 @@ const Pagination = ({ page, totalPages, onPageChange, label }: PaginationProps) 
                 …
               </span>
             )}
-            <button
-              type="button"
+            <Button
+              unstyled
               className={clsx(styles.btn, p === page && styles.active)}
               onClick={() => onPageChange(p)}
               aria-label={`Stranica ${p}`}
               aria-current={p === page ? "page" : undefined}
             >
               {p}
-            </button>
+            </Button>
           </span>
         );
       })}
 
-      <button
-        type="button"
+      <Button
+        unstyled
         className={styles.btn}
         onClick={() => onPageChange(page + 1)}
         disabled={page >= totalPages}
         aria-label="Sljedeća stranica"
       >
         →
-      </button>
+      </Button>
 
       <span className={styles.info}>
         Stranica {page} od {totalPages}

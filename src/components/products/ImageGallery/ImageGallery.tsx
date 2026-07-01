@@ -1,3 +1,4 @@
+import Button from "@/components/common/Button";
 import clsx from "clsx";
 import { useState } from "react";
 import styles from "./ImageGallery.module.scss";
@@ -26,9 +27,9 @@ const ImageGallery = ({ images, title }: ImageGalleryProps) => {
           aria-label="Odabir slike"
         >
           {images.map((image, index) => (
-            <button
+            <Button
               key={image}
-              type="button"
+              unstyled
               role="tab"
               className={clsx(
                 styles.thumb,
@@ -39,7 +40,7 @@ const ImageGallery = ({ images, title }: ImageGalleryProps) => {
               onClick={() => setActiveIndex(index)}
             >
               <img src={image} alt="" loading="lazy" width={72} height={54} />
-            </button>
+            </Button>
           ))}
         </div>
       )}

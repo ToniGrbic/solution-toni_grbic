@@ -1,3 +1,4 @@
+import Button from "@/components/common/Button";
 import { useAuth } from "@/context/AuthProvider";
 import { useFavorites } from "@/hooks/useFavorites";
 import { Routes } from "@/types/enums";
@@ -59,7 +60,8 @@ const ProductTable = ({ products }: ProductTableProps) => {
                 <td className={styles.price}>{formatPrice(product.price)}</td>
                 {isAuthenticated && (
                   <td>
-                    <button
+                    <Button
+                      unstyled
                       type="button"
                       className={clsx(
                         styles.favorite,
@@ -74,7 +76,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
                       aria-pressed={favorited}
                     >
                       {favorited ? "♥" : "♡"}
-                    </button>
+                    </Button>
                   </td>
                 )}
               </tr>

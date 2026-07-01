@@ -1,3 +1,4 @@
+import Button from "@/components/common/Button";
 import { useAuth } from "@/context/AuthProvider";
 import { Routes } from "@/types/enums";
 import clsx from "clsx";
@@ -45,8 +46,8 @@ const Sidebar = () => {
 
   return (
     <>
-      <button
-        type="button"
+      <Button
+        unstyled
         className={styles.toggle}
         onClick={toggle}
         aria-expanded={isOpen}
@@ -56,11 +57,11 @@ const Sidebar = () => {
         <span className={styles.toggleIcon} aria-hidden="true">
           {isOpen ? "✕" : "☰"}
         </span>
-      </button>
+      </Button>
 
       {isOpen && (
-        <button
-          type="button"
+        <Button
+          unstyled
           className={styles.backdrop}
           onClick={close}
           aria-label="Zatvori izbornik"
@@ -80,9 +81,9 @@ const Sidebar = () => {
           Favoriti
         </NavLink>
         {isAuthenticated ? (
-          <button type="button" className={styles.link} onClick={handleLogout}>
+          <Button unstyled className={styles.link} onClick={handleLogout}>
             Odjava
-          </button>
+          </Button>
         ) : (
           <NavLink to={Routes.LOGIN} className={linkClass} onClick={close}>
             Prijava

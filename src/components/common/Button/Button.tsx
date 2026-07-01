@@ -14,11 +14,13 @@ const Button = ({
   variant = ButtonVariant.PRIMARY,
   fullWidth = false,
   unstyled = false,
+  type = "button",
   className,
   children,
   ...props
 }: ButtonProps) => (
   <button
+    type={type}
     className={clsx(
       !unstyled && styles.base,
       !unstyled && styles[variant],
