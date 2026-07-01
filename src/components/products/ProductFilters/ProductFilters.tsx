@@ -8,6 +8,7 @@ import type {
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import styles from "./ProductFilters.module.scss";
+import { IoFilter } from "react-icons/io5";
 
 type ProductFiltersProps = {
   filters: Filters;
@@ -25,10 +26,13 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
   }, [filters.search]);
 
   useEffect(() => {
-    if (debouncedSearch !== filters.search) {
+    if (
+      debouncedSearch === searchInput &&
+      debouncedSearch !== filters.search
+    ) {
       onChange({ search: debouncedSearch });
     }
-  }, [debouncedSearch, filters.search, onChange]);
+  }, [debouncedSearch, searchInput, filters.search, onChange]);
 
   const hasActiveFilters =
     filters.search || filters.category || filters.minPrice || filters.maxPrice;
@@ -76,6 +80,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
         aria-controls="product-filters-inputs"
         onClick={() => setFiltersExpanded((expanded) => !expanded)}
       >
+        <IoFilter />
         {filtersExpanded ? "Sakrij filtere" : "Prikaži filtere"}
         {hasActiveFilters && !filtersExpanded && (
           <span className={styles.activeBadge} aria-hidden />
