@@ -28,15 +28,6 @@ const ProductDetail = () => {
 
   const { data: product, isLoading, isError, refetch } = useProduct(productId);
 
-  const handleFavorite = () => {
-    toggleFavorite(product.id);
-    if (!favorited) {
-      toast.success("Proizvod dodan u favorite");
-    } else {
-      toast.success("Proizvod uklonjen iz favorita");
-    }
-  };
-
   const backUrl =
     (location.state as { from?: string } | null)?.from ?? Routes.PRODUCTS;
 
@@ -77,6 +68,15 @@ const ProductDetail = () => {
 
   const stock = getStockStatus(product.stock);
   const favorited = isFavorite(product.id);
+
+  const handleFavorite = () => {
+    toggleFavorite(product.id);
+    if (!favorited) {
+      toast.success("Proizvod dodan u favorite");
+    } else {
+      toast.success("Proizvod uklonjen iz favorita");
+    }
+  };
 
   return (
     <article className={styles.page}>
