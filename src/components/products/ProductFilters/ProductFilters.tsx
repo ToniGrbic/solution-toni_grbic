@@ -5,6 +5,7 @@ import type {
   ProductFilters as Filters,
   ProductViewMode,
 } from "@/types/product";
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 import styles from "./ProductFilters.module.scss";
 
@@ -16,6 +17,7 @@ type ProductFiltersProps = {
 const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
   const { data: categories = [] } = useCategories();
   const [searchInput, setSearchInput] = useState(filters.search);
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
   const debouncedSearch = useDebounce(searchInput);
 
   useEffect(() => {
@@ -66,7 +68,24 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
 
   return (
     <section className={styles.filters} aria-label="Filteri proizvoda">
-      <div className={styles.row}>
+      <Button
+        unstyled
+        type="button"
+        className={styles.toggleBtn}
+        aria-expanded={filtersExpanded}
+        aria-controls="product-filters-inputs"
+        onClick={() => setFiltersExpanded((expanded) => !expanded)}
+      >
+        {filtersExpanded ? "Sakrij filtere" : "Prikaži filtere"}
+        {hasActiveFilters && !filtersExpanded && (
+          <span className={styles.activeBadge} aria-hidden />
+        )}
+      </Button>
+
+      <div
+        id="product-filters-inputs"
+        className={clsx(styles.row, !filtersExpanded && styles.collapsed)}
+      >
         <Input
           id="search"
           label="Pretraga"
