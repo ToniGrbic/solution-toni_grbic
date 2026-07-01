@@ -1,4 +1,6 @@
+import { LoadingSpinner } from "@/components/common";
 import type { ReactNode } from "react";
+import { Suspense } from "react";
 import { Outlet } from "react-router";
 import Header from "@/components/layout/Header";
 import styles from "./Layout.module.scss";
@@ -14,7 +16,9 @@ const Layout = ({ children }: LayoutProps) => (
     </a>
     <Header />
     <main id="main-content" className={styles.main}>
-      {children ?? <Outlet />}
+      <Suspense fallback={<LoadingSpinner />}>
+        {children ?? <Outlet />}
+      </Suspense>
     </main>
   </div>
 );

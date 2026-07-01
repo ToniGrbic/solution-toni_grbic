@@ -1,12 +1,14 @@
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Layout from "@/components/layout/Layout";
-import Favorites from "@/pages/Favorites";
-import Login from "@/pages/Login";
-import NotFound from "@/pages/NotFound";
-import ProductDetail from "@/pages/ProductDetail";
-import Products from "@/pages/Products";
 import { Routes as AppRoutes } from "@/types/enums";
+import { lazy } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+
+const Favorites = lazy(() => import("@/pages/Favorites"));
+const Login = lazy(() => import("@/pages/Login"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
+const Products = lazy(() => import("@/pages/Products"));
 
 const Router = () => {
   return (
