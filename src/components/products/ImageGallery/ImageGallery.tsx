@@ -1,4 +1,5 @@
 import Button from "@/components/common/Button";
+import { useZoomInLens } from "@/hooks/useZoomInLens";
 import clsx from "clsx";
 import { useState } from "react";
 import styles from "./ImageGallery.module.scss";
@@ -10,14 +11,40 @@ type ImageGalleryProps = {
 
 const ImageGallery = ({ images, title }: ImageGalleryProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { mainImageRef, imgRef, lens, setLens, handleMouseMove, handleMouseLeave } =
+    useZoomInLens();
+
   const activeImage = images[activeIndex] ?? images[0];
 
   if (!activeImage) return null;
 
   return (
     <div className={styles.gallery} role="region" aria-label="Galerija slika">
-      <div className={styles.mainImage}>
-        <img src={activeImage} alt={title} width={800} height={600} />
+      <div
+        ref={mainImageRef}
+        className={styles.mainImage}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <img
+          ref={imgRef}
+          src={activeImage}
+          alt={title}
+          width={800}
+          height={600}
+          onLoad={() => setLens((prev) => ({ ...prev, visible: false }))}
+        />
+        {lens.visible && (
+          <div
+            className={styles.zoomLens}
+            style={{
+              backgroundImage: `url(${activeImage})`,
+              backgroundSize: `${lens.bgWidth}px ${lens.bgHeight}px`,
+              backgroundPosition: `${lens.bgX}px ${lens.bgY}px`,
+            }}
+            aria-hidden
+          />
+        )}
       </div>
 
       {images.length > 1 && (
