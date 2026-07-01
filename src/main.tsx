@@ -28,7 +28,7 @@ createRoot(document.getElementById("root")!).render(
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
           <ErrorBoundary>
-            <Toaster />
+            <Toaster position="bottom-center" />
             <Router />
           </ErrorBoundary>
         </QueryClientProvider>

@@ -6,7 +6,6 @@ import type { Product } from "@/types/product";
 import { formatPrice, saveScrollPosition, truncateText } from "@/utils/helpers";
 import clsx from "clsx";
 import type { MouseEvent } from "react";
-import toast from "react-hot-toast";
 import { Link, useLocation } from "react-router";
 import styles from "./ProductCard.module.scss";
 
@@ -23,12 +22,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const handleFavorite = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
-
-    if (favorited) {
-      toast.success("Proizvod uklonjen iz favorita");
-    } else {
-      toast.success("Proizvod dodan u favorite");
-    }
 
     if (isAuthenticated) {
       toggleFavorite(product.id);

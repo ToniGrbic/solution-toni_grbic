@@ -6,7 +6,6 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { ButtonVariant, Routes } from "@/types/enums";
 import { formatPrice } from "@/utils/helpers";
 import clsx from "clsx";
-import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate, useParams } from "react-router";
 import styles from "./index.module.scss";
 
@@ -71,11 +70,6 @@ const ProductDetail = () => {
 
   const handleFavorite = () => {
     toggleFavorite(product.id);
-    if (!favorited) {
-      toast.success("Proizvod dodan u favorite");
-    } else {
-      toast.success("Proizvod uklonjen iz favorita");
-    }
   };
 
   return (

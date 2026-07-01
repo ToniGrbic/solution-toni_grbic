@@ -1,6 +1,7 @@
 import { FAVORITES_KEY } from "@/constants";
-import { toggleFavorite as toggleStored } from "@/utils/storage";
+import { isFavorite, toggleFavorite as toggleStored } from "@/utils/storage";
 import { useCallback, useSyncExternalStore } from "react";
+import toast from "react-hot-toast";
 
 const EMPTY_FAVORITES: number[] = [];
 
@@ -50,9 +51,15 @@ const subscribe = (callback: () => void) => {
   };
 };
 
-const notify = (): void => {
+const notify = (id: number): void => {
   invalidateSnapshot();
   listeners.forEach((listener) => listener());
+
+  if (isFavorite(id)) {
+    toast.success("Proizvod dodan u favorite");
+  } else {
+    toast.success("Proizvod uklonjen iz favorita");
+  }
 };
 
 export const useFavorites = () => {
@@ -60,7 +67,7 @@ export const useFavorites = () => {
 
   const toggleFavorite = useCallback((id: number) => {
     toggleStored(id);
-    notify();
+    notify(id);
   }, []);
 
   const isFavorite = useCallback(
