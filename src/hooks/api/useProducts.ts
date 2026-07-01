@@ -1,6 +1,4 @@
 import {
-  fetchCategories,
-  fetchProductById,
   fetchProducts,
   fetchProductsByCategory,
   searchProducts,
@@ -66,28 +64,4 @@ export const useProducts = (filters: ProductFilters) =>
     queryFn: () => fetchFilteredProducts(filters),
     placeholderData: (previous) => previous,
     staleTime: 1000 * 60 * 10,
-  });
-
-export const useProduct = (id: number) =>
-  useQuery({
-    queryKey: productKeys.detail(id),
-    queryFn: () => fetchProductById(id),
-    enabled: Number.isFinite(id) && id > 0,
-  });
-
-export const useCategories = () =>
-  useQuery({
-    queryKey: productKeys.categories(),
-    queryFn: fetchCategories,
-    staleTime: 1000 * 60 * 10,
-  });
-
-export const useFavoriteProducts = (ids: number[]) =>
-  useQuery({
-    queryKey: productKeys.favorites(ids),
-    queryFn: async () => {
-      const products = await Promise.all(ids.map((id) => fetchProductById(id)));
-      return products;
-    },
-    enabled: ids.length > 0,
   });
