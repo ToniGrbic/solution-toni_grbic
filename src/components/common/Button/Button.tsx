@@ -7,7 +7,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
   fullWidth?: boolean;
   unstyled?: boolean;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 const Button = ({
