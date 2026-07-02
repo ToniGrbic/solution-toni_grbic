@@ -61,7 +61,7 @@ const ProductDetail = () => {
           message={"Traženi proizvod ne postoji ili nije dostupan."}
           onRetry={refetch}
         />
-        <Link to={backUrl}>
+        <Link to={backUrl} viewTransition>
           <Button variant={ButtonVariant.SECONDARY}>← Natrag na listu</Button>
         </Link>
       </div>
@@ -77,7 +77,7 @@ const ProductDetail = () => {
 
   return (
     <article className={styles.page}>
-      <Link to={backUrl} className={styles.back}>
+      <Link to={backUrl} className={styles.back} viewTransition>
         <Button variant={ButtonVariant.GHOST}>
           <FaArrowLeftLong /> Natrag na listu
         </Button>
@@ -129,7 +129,7 @@ const ProductDetail = () => {
             )}
             <Button
               variant={ButtonVariant.SECONDARY}
-              onClick={() => navigate(backUrl)}
+              onClick={() => navigate(backUrl, { viewTransition: true })}
             >
               Povratak
             </Button>

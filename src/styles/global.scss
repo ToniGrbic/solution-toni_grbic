@@ -28,6 +28,12 @@ body {
   min-height: 100dvh;
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+  animation-timing-function: ease;
+}
+
 img {
   max-width: 100%;
   display: block;

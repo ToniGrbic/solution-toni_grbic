@@ -16,15 +16,30 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <NavLink to={Routes.PRODUCTS} className={styles.logo}>
+        <NavLink
+          to={Routes.PRODUCTS}
+          className={styles.logo}
+          viewTransition
+          prefetch="intent"
+        >
           Katalog proizvoda
         </NavLink>
 
         <nav className={styles.nav} aria-label="Glavna navigacija">
-          <NavLink to={Routes.PRODUCTS} className={navLinkClass}>
+          <NavLink
+            to={Routes.PRODUCTS}
+            className={navLinkClass}
+            viewTransition
+            prefetch="intent"
+          >
             Proizvodi
           </NavLink>
-          <NavLink to={Routes.FAVORITES} className={navLinkClass}>
+          <NavLink
+            to={Routes.FAVORITES}
+            className={navLinkClass}
+            viewTransition
+            prefetch="intent"
+          >
             Favoriti
           </NavLink>
         </nav>

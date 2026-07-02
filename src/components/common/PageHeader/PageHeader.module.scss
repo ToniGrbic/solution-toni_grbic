@@ -1,5 +1,6 @@
 .header {
   margin-bottom: var(--space-lg);
+  view-transition-name: page-header;
 }
 
 .title {
@@ -10,4 +11,42 @@
 .subtitle {
   margin: 0;
   color: var(--color-text-muted);
+}
+
+:global(::view-transition-old(page-header)),
+:global(::view-transition-new(page-header)) {
+  animation-duration: 0.25s;
+  animation-timing-function: ease;
+}
+
+:global(::view-transition-old(page-header)) {
+  animation-name: page-header-fade-out;
+}
+
+:global(::view-transition-new(page-header)) {
+  animation-name: page-header-fade-in;
+}
+
+@keyframes page-header-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}
+
+@keyframes page-header-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -74,10 +74,22 @@ const Sidebar = () => {
         aria-label="Mobilna navigacija"
         aria-hidden={!isOpen}
       >
-        <NavLink to={Routes.PRODUCTS} className={linkClass} onClick={close}>
+        <NavLink
+          to={Routes.PRODUCTS}
+          className={linkClass}
+          onClick={close}
+          viewTransition
+          prefetch="intent"
+        >
           Proizvodi
         </NavLink>
-        <NavLink to={Routes.FAVORITES} className={linkClass} onClick={close}>
+        <NavLink
+          to={Routes.FAVORITES}
+          className={linkClass}
+          onClick={close}
+          viewTransition
+          prefetch="intent"
+        >
           Favoriti
         </NavLink>
         {isAuthenticated ? (
