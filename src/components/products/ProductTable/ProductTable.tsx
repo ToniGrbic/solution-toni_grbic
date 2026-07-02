@@ -6,7 +6,7 @@ import type { Product } from "@/types/product";
 import { formatPrice, saveScrollPosition, truncateText } from "@/utils/helpers";
 import clsx from "clsx";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
-import { Link, useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import styles from "./ProductTable.module.scss";
 
 type ProductTableProps = {
@@ -20,12 +20,17 @@ const ProductTable = ({ products }: ProductTableProps) => {
   const { isFavorite, toggleFavorite } = useFavorites();
 
   const handleProductClick = (id: number) => {
+    saveScrollPosition();
     navigate(`${Routes.PRODUCTS}/${id}`, {
       state: { from: location.pathname + location.search },
+      viewTransition: true,
     });
   };
 
-  const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
+  const handleFavoriteClick = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    id: number,
+  ) => {
     e.stopPropagation();
     toggleFavorite(id);
   };
@@ -60,16 +65,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
                     height={42}
                   />
                 </td>
-                <td>
-                  <Link
-                    to={`${Routes.PRODUCTS}/${product.id}`}
-                    state={{ from: location.pathname + location.search }}
-                    className={styles.link}
-                    onClick={saveScrollPosition}
-                  >
-                    {product.title}
-                  </Link>
-                </td>
+                <td>{product.title}</td>
                 <td className={styles.description}>
                   {truncateText(product.description, 100)}
                 </td>
