@@ -29,4 +29,16 @@ enum SkeletonVariant {
   IMAGE = "image",
 }
 
-export { ButtonVariant, Routes, SkeletonVariant, StateMessageVariant, Theme };
+enum ViewMode {
+  GRID = "grid",
+  TABLE = "table",
+}
+
+export {
+  ButtonVariant,
+  Routes,
+  SkeletonVariant,
+  StateMessageVariant,
+  Theme,
+  ViewMode,
+};

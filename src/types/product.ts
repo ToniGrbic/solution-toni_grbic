@@ -1,3 +1,5 @@
+import type { ViewMode } from "./enums";
+
 export type ProductCategory = {
   slug: string;
   name: string;
@@ -25,13 +27,13 @@ export type ProductsResponse = {
   limit: number;
 };
 
-export type ProductViewMode = "grid" | "table";
-
 export type ProductFilters = {
   search: string;
   category: string;
   minPrice: string;
   maxPrice: string;
   page: number;
-  view: ProductViewMode;
+  view: ViewMode;
 };
+
+export type PriceFilterFields = "minPrice" | "maxPrice";

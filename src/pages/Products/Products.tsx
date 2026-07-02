@@ -12,6 +12,7 @@ import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import type { Product } from "@/types/product";
 import clsx from "clsx";
 import styles from "./index.module.scss";
+import { ViewMode } from "@/types/enums";
 
 const Products = () => {
   useScrollRestoration();
@@ -54,7 +55,7 @@ const Products = () => {
           <div
             className={clsx(isFetching && !isLoading && styles.loadingOverlay)}
           >
-            {filters.view === "grid" ? (
+            {filters.view === ViewMode.GRID ? (
               <ul className={styles.grid} aria-label="Lista proizvoda">
                 {products.map((product: Product) => (
                   <li key={product.id}>

@@ -1,6 +1,7 @@
+import { ViewMode } from "@/types/enums";
+import type { ProductFilters } from "@/types/product";
 import { useCallback, useMemo } from "react";
 import { useSearchParams } from "react-router";
-import type { ProductFilters, ProductViewMode } from "@/types/product";
 
 const DEFAULT_FILTERS: ProductFilters = {
   search: "",
@@ -8,7 +9,7 @@ const DEFAULT_FILTERS: ProductFilters = {
   minPrice: "",
   maxPrice: "",
   page: 1,
-  view: "grid",
+  view: ViewMode.GRID,
 };
 
 const parsePage = (value: string | null): number => {
@@ -16,8 +17,8 @@ const parsePage = (value: string | null): number => {
   return Number.isFinite(page) && page > 0 ? page : 1;
 };
 
-const parseView = (value: string | null): ProductViewMode =>
-  value === "table" ? "table" : "grid";
+const parseView = (value: string | null): ViewMode =>
+  value === ViewMode.TABLE ? ViewMode.TABLE : ViewMode.GRID;
 
 export const useProductFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -60,7 +61,10 @@ export const useProductFilters = () => {
             }
           });
 
-          if (!("page" in updates) && Object.keys(updates).some((k) => k !== "view")) {
+          if (
+            !("page" in updates) &&
+            Object.keys(updates).some((k) => k !== "view")
+          ) {
             next.delete("page");
           }
 

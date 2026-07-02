@@ -1,14 +1,15 @@
 import { Button, Input, Select } from "@/components/common";
 import { useCategories } from "@/hooks/api/useCategories";
 import { useDebounce } from "@/hooks/useDebounce";
+import { ViewMode } from "@/types/enums";
 import type {
   ProductFilters as Filters,
-  ProductViewMode,
+  PriceFilterFields,
 } from "@/types/product";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
-import styles from "./ProductFilters.module.scss";
 import { IoFilter } from "react-icons/io5";
+import styles from "./ProductFilters.module.scss";
 
 type ProductFiltersProps = {
   filters: Filters;
@@ -26,10 +27,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
   }, [filters.search]);
 
   useEffect(() => {
-    if (
-      debouncedSearch === searchInput &&
-      debouncedSearch !== filters.search
-    ) {
+    if (debouncedSearch === searchInput && debouncedSearch !== filters.search) {
       onChange({ search: debouncedSearch });
     }
   }, [debouncedSearch, searchInput, filters.search, onChange]);
@@ -48,9 +46,9 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
     });
   };
 
-  const setView = (view: ProductViewMode) => onChange({ view });
+  const setView = (view: ViewMode) => onChange({ view });
 
-  const handlePriceChange = (field: "minPrice" | "maxPrice", value: string) => {
+  const handlePriceChange = (field: PriceFilterFields, value: string) => {
     if (value === "") {
       onChange({ [field]: "" });
       return;
@@ -150,8 +148,8 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
             unstyled
             type="button"
             className={styles.viewBtn}
-            aria-pressed={filters.view === "grid"}
-            onClick={() => setView("grid")}
+            aria-pressed={filters.view === ViewMode.GRID}
+            onClick={() => setView(ViewMode.GRID)}
           >
             Kartice
           </Button>
@@ -159,8 +157,8 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
             unstyled
             type="button"
             className={styles.viewBtn}
-            aria-pressed={filters.view === "table"}
-            onClick={() => setView("table")}
+            aria-pressed={filters.view === ViewMode.TABLE}
+            onClick={() => setView(ViewMode.TABLE)}
           >
             Tablica
           </Button>
