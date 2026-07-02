@@ -41,7 +41,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className={styles.imageWrap}>
           <img
             src={product.thumbnail}
-            alt=""
+            alt={product.title}
             className={styles.image}
             loading="lazy"
             width={300}

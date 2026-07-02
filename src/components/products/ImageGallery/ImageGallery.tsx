@@ -11,8 +11,14 @@ type ImageGalleryProps = {
 
 const ImageGallery = ({ images, title }: ImageGalleryProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { mainImageRef, imgRef, lens, setLens, handleMouseMove, handleMouseLeave } =
-    useZoomInLens();
+  const {
+    mainImageRef,
+    imgRef,
+    lens,
+    setLens,
+    handleMouseMove,
+    handleMouseLeave,
+  } = useZoomInLens();
 
   const activeImage = images[activeIndex] ?? images[0];
 
@@ -66,7 +72,13 @@ const ImageGallery = ({ images, title }: ImageGalleryProps) => {
               aria-label={`Slika ${index + 1} od ${images.length}`}
               onClick={() => setActiveIndex(index)}
             >
-              <img src={image} alt="" loading="lazy" width={72} height={54} />
+              <img
+                src={image}
+                loading="lazy"
+                width={72}
+                height={54}
+                alt={`${title} - slika ${index + 1}`}
+              />
             </Button>
           ))}
         </div>
