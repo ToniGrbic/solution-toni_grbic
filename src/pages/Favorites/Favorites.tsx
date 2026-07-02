@@ -1,4 +1,8 @@
-import { ProductGridSkeleton, StateMessage } from "@/components/common";
+import {
+  PageHeader,
+  ProductGridSkeleton,
+  StateMessage,
+} from "@/components/common";
 import ProductCard from "@/components/common/ProductCard";
 import { useFavoriteProducts } from "@/hooks/api/useFavoriteProducts";
 import { useFavorites } from "@/hooks/useFavorites";
@@ -15,12 +19,10 @@ const Favorites = () => {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>Favoriti</h1>
-        <p className={styles.subtitle}>
-          Vaši spremljeni proizvodi ({favorites.length})
-        </p>
-      </header>
+      <PageHeader
+        title="Favoriti"
+        subtitle={`Vaši spremljeni proizvodi (${favorites.length})`}
+      />
 
       {favorites.length === 0 && (
         <StateMessage.Empty

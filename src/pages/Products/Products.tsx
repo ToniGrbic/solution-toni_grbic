@@ -1,8 +1,9 @@
 import {
+  PageHeader,
+  Pagination,
   ProductCard,
   ProductGridSkeleton,
   StateMessage,
-  Pagination,
 } from "@/components/common";
 import { ProductFilters, ProductTable } from "@/components/products";
 import { PAGE_SIZE } from "@/constants";
@@ -28,12 +29,10 @@ const Products = () => {
 
   return (
     <div className={styles.page}>
-      <header className={styles.header}>
-        <h1 className={styles.title}>Proizvodi</h1>
-        <p className={styles.subtitle}>
-          Pregledajte katalog proizvoda s filtriranjem i pretragom
-        </p>
-      </header>
+      <PageHeader
+        title="Proizvodi"
+        subtitle="Pregledajte katalog proizvoda s filtriranjem i pretragom"
+      />
 
       <ProductFilters filters={filters} onChange={setFilters} />
 
