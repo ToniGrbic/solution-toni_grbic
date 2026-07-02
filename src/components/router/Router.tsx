@@ -2,11 +2,7 @@ import ProtectedRoute from "@/components/ProtectedRoute";
 import Layout from "@/components/layout/Layout";
 import { Routes as AppRoutes } from "@/types/enums";
 import { lazy } from "react";
-import {
-  createBrowserRouter,
-  Navigate,
-  RouterProvider,
-} from "react-router";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 
 const Favorites = lazy(() => import("@/pages/Favorites"));
 const Login = lazy(() => import("@/pages/Login"));
@@ -14,7 +10,7 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
 const Products = lazy(() => import("@/pages/Products"));
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [

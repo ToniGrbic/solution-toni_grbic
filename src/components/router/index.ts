@@ -1,1 +1,1 @@
-export { default } from "./Router";
+export { default, router } from "./Router";
