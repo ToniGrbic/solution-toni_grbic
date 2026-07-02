@@ -1,6 +1,7 @@
 import Button from "@/components/common/Button";
 import clsx from "clsx";
 import styles from "./Pagination.module.scss";
+import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
 type PaginationProps = {
   page: number;
@@ -31,7 +32,7 @@ const Pagination = ({
         disabled={page <= 1}
         aria-label="Prethodna stranica"
       >
-        ←
+        <FaArrowLeftLong />
       </Button>
 
       {visiblePages.map((p, index) => {
@@ -65,7 +66,7 @@ const Pagination = ({
         disabled={page >= totalPages}
         aria-label="Sljedeća stranica"
       >
-        →
+        <FaArrowRightLong />
       </Button>
 
       <span className={styles.info}>

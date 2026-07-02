@@ -2,6 +2,8 @@ import Button from "@/components/common/Button";
 import { useTheme } from "@/context/ThemeProvider";
 import { Theme } from "@/types/enums";
 import styles from "./ThemeToggle.module.scss";
+import { MdSunny } from "react-icons/md";
+import { FaRegMoon } from "react-icons/fa";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
@@ -15,7 +17,7 @@ const ThemeToggle = () => {
       aria-label={isDark ? "Uključi svijetlu temu" : "Uključi tamnu temu"}
       aria-pressed={isDark}
     >
-      {isDark ? "☀" : "☾"}
+      {isDark ? <MdSunny/> : <FaRegMoon/>}
     </Button>
   );
 };

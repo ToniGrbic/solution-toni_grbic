@@ -6,6 +6,9 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { ButtonVariant, Routes } from "@/types/enums";
 import { formatPrice } from "@/utils/helpers";
 import clsx from "clsx";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { IoMdStar } from "react-icons/io";
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { Link, useLocation, useNavigate, useParams } from "react-router";
 import styles from "./index.module.scss";
 
@@ -75,7 +78,9 @@ const ProductDetail = () => {
   return (
     <article className={styles.page}>
       <Link to={backUrl} className={styles.back}>
-        <Button variant={ButtonVariant.GHOST}>← Natrag na listu</Button>
+        <Button variant={ButtonVariant.GHOST}>
+          <FaArrowLeftLong /> Natrag na listu
+        </Button>
       </Link>
 
       <div className={styles.layout}>
@@ -85,7 +90,9 @@ const ProductDetail = () => {
           <h1 className={styles.title}>{product.title}</h1>
 
           <div className={styles.meta}>
-            <span className={styles.badge}>★ {product.rating.toFixed(1)}</span>
+            <span className={styles.badge}>
+              <IoMdStar /> {product.rating.toFixed(1)}
+            </span>
             <span className={styles.badge}>
               {product.category.charAt(0).toUpperCase() +
                 product.category.slice(1)}
@@ -108,7 +115,16 @@ const ProductDetail = () => {
                 onClick={handleFavorite}
                 aria-pressed={favorited}
               >
-                {favorited ? "♥ U favoritima" : "♡ Dodaj u favorite"}
+                {favorited ? (
+                  <>
+                    <IoHeart /> U favoritima
+                  </>
+                ) : (
+                  <>
+                    <IoHeartOutline />
+                    Dodaj u favorite
+                  </>
+                )}
               </Button>
             )}
             <Button

@@ -16,6 +16,14 @@
   cursor: pointer;
   font-weight: 500;
   color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+
+  svg {
+    scale: 0.8;
+  }
 
   &:hover:not(:disabled) {
     border-color: var(--color-primary);

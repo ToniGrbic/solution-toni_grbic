@@ -7,6 +7,7 @@ import { formatPrice, saveScrollPosition, truncateText } from "@/utils/helpers";
 import clsx from "clsx";
 import { Link, useLocation } from "react-router";
 import styles from "./ProductTable.module.scss";
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
 
 type ProductTableProps = {
   products: Product[];
@@ -75,7 +76,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
                       }
                       aria-pressed={favorited}
                     >
-                      {favorited ? "♥" : "♡"}
+                      {favorited ? <IoHeart /> : <IoHeartOutline />}
                     </Button>
                   </td>
                 )}

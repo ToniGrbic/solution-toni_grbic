@@ -8,6 +8,7 @@ import clsx from "clsx";
 import type { MouseEvent } from "react";
 import { Link, useLocation } from "react-router";
 import styles from "./ProductCard.module.scss";
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
 
 type ProductCardProps = {
   product: Product;
@@ -67,7 +68,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 }
                 aria-pressed={favorited}
               >
-                {favorited ? "♥" : "♡"}
+                {favorited ? <IoHeart /> : <IoHeartOutline />}
               </Button>
             )}
           </div>
