@@ -10,7 +10,7 @@ const NotFound = lazy(() => import("@/pages/NotFound"));
 const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
 const Products = lazy(() => import("@/pages/Products"));
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
@@ -50,4 +50,4 @@ const Router = () => {
   return <RouterProvider router={router} />;
 };
 
-export default Router;
+export { Router, router };
