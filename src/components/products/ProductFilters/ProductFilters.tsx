@@ -105,7 +105,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
           value={filters.category}
           onChange={(e) => onChange({ category: e.target.value })}
         >
-          <option value="">Sve kategorije</option>
+          <option value="">Sve</option>
           {categories.map((category) => (
             <option key={category.slug} value={category.slug}>
               {category.name}
