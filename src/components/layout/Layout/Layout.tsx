@@ -1,8 +1,8 @@
 import { LoadingSpinner } from "@/components/common";
+import Header from "@/components/layout/Header";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 import { Outlet } from "react-router";
-import Header from "@/components/layout/Header";
 import styles from "./Layout.module.scss";
 
 type LayoutProps = {
