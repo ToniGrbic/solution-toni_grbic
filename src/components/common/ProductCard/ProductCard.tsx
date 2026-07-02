@@ -35,6 +35,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
         to={`${Routes.PRODUCTS}/${product.id}`}
         state={{ from: location.pathname + location.search }}
         className={styles.link}
+        viewTransition
+        prefetch="intent"
         onClick={saveScrollPosition}
         aria-label={`Pogledaj detalje: ${product.title}`}
       >

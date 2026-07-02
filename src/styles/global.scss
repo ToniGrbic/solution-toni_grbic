@@ -30,8 +30,8 @@ body {
 
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.25s;
-  animation-timing-function: ease;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
 }
 
 img {
