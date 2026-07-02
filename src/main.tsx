@@ -1,9 +1,9 @@
 import ErrorBoundary from "@/components/ErrorBoundary";
+import Router from "@/components/router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Toaster } from "react-hot-toast";
-import { Router } from "@/components/Router/Router";
 import { AuthProvider } from "./context/AuthProvider";
 import { ThemeProvider } from "./context/ThemeProvider";
 import "./styles/global.scss";

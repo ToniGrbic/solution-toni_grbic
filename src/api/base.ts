@@ -1,4 +1,4 @@
-import { router } from "@/components/Router";
+import { router } from "@/components/router";
 import { Routes as AppRoutes } from "@/types/enums";
 import axios from "axios";
 
