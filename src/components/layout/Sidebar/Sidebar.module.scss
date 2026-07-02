@@ -29,6 +29,9 @@
 }
 
 .toggleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.125rem;
   line-height: 1;
 }

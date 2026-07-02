@@ -3,6 +3,8 @@ import { useAuth } from "@/context/AuthProvider";
 import { Routes } from "@/types/enums";
 import clsx from "clsx";
 import { useCallback, useEffect, useId, useState } from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { NavLink, useLocation } from "react-router";
 import styles from "./Sidebar.module.scss";
 
@@ -55,7 +57,7 @@ const Sidebar = () => {
         aria-label={isOpen ? "Zatvori izbornik" : "Otvori izbornik"}
       >
         <span className={styles.toggleIcon} aria-hidden="true">
-          {isOpen ? "✕" : "☰"}
+          {isOpen ? <AiOutlineClose /> : <RxHamburgerMenu />}
         </span>
       </Button>
 
