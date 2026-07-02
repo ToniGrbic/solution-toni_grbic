@@ -6,7 +6,7 @@ import type { Product } from "@/types/product";
 import { formatPrice, saveScrollPosition, truncateText } from "@/utils/helpers";
 import clsx from "clsx";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import styles from "./ProductTable.module.scss";
 
 type ProductTableProps = {
@@ -15,8 +15,20 @@ type ProductTableProps = {
 
 const ProductTable = ({ products }: ProductTableProps) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
+
+  const handleProductClick = (id: number) => {
+    navigate(`${Routes.PRODUCTS}/${id}`, {
+      state: { from: location.pathname + location.search },
+    });
+  };
+
+  const handleFavoriteClick = (e: React.MouseEvent<HTMLButtonElement>, id: number) => {
+    e.stopPropagation();
+    toggleFavorite(id);
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -34,7 +46,10 @@ const ProductTable = ({ products }: ProductTableProps) => {
           {products.map((product) => {
             const favorited = isFavorite(product.id);
             return (
-              <tr key={product.id}>
+              <tr
+                key={product.id}
+                onClick={() => handleProductClick(product.id)}
+              >
                 <td>
                   <img
                     src={product.thumbnail}
@@ -68,7 +83,7 @@ const ProductTable = ({ products }: ProductTableProps) => {
                         styles.favorite,
                         favorited && styles.active,
                       )}
-                      onClick={() => toggleFavorite(product.id)}
+                      onClick={(e) => handleFavoriteClick(e, product.id)}
                       aria-label={
                         favorited
                           ? `Ukloni ${product.title} iz favorita`
