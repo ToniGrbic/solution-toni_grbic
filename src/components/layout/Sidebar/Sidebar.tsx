@@ -61,7 +61,7 @@ const Sidebar = () => {
         id={menuId}
         className={clsx(styles.sidebar, isOpen && styles.open)}
         aria-label="Mobilna navigacija"
-        aria-hidden={!isOpen}
+        inert={!isOpen}
       >
         <NavLink
           to={Routes.PRODUCTS}
