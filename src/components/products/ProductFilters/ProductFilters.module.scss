@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as *;
+
 .filters {
   display: flex;
   flex-direction: column;
@@ -23,7 +25,7 @@
   font-weight: 500;
   color: var(--color-text);
 
-  @media (min-width: 768px) {
+  @include respond-to(md) {
     display: none;
   }
 }
@@ -35,18 +37,49 @@
   background: var(--color-primary);
 }
 
+.rowWrapper {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.25s ease;
+
+  &.collapsed {
+    @media (max-width: 767px) {
+      grid-template-rows: 0fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.rowInner {
+  overflow: hidden;
+  min-height: 0;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+
+  .collapsed & {
+    @media (max-width: 767px) {
+      opacity: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  @include respond-to(md) {
+    overflow: visible;
+  }
+}
+
 .row {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-md);
 
-  &.collapsed {
-    @media (max-width: 767px) {
-      display: none;
-    }
-  }
-
-  @media (min-width: 768px) {
+  @include respond-to(md) {
     grid-template-columns: 2fr 1fr 1fr 1fr;
   }
 }

@@ -87,55 +87,59 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
 
       <div
         id="product-filters-inputs"
-        className={clsx(styles.row, !filtersExpanded && styles.collapsed)}
+        className={clsx(styles.rowWrapper, !filtersExpanded && styles.collapsed)}
       >
-        <Input
-          id="search"
-          label="Pretraga"
-          type="search"
-          placeholder="Pretraži po nazivu…"
-          hint="Rezultati se ažuriraju nakon pauze u unosu"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-        />
+        <div className={styles.rowInner}>
+          <div className={styles.row}>
+            <Input
+              id="search"
+              label="Pretraga"
+              type="search"
+              placeholder="Pretraži po nazivu…"
+              hint="Rezultati se ažuriraju nakon pauze u unosu"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
 
-        <Select
-          id="category"
-          label="Kategorija"
-          value={filters.category}
-          onChange={(e) => onChange({ category: e.target.value })}
-        >
-          <option value="">Sve</option>
-          {categories.map((category) => (
-            <option key={category.slug} value={category.slug}>
-              {category.name}
-            </option>
-          ))}
-        </Select>
+            <Select
+              id="category"
+              label="Kategorija"
+              value={filters.category}
+              onChange={(e) => onChange({ category: e.target.value })}
+            >
+              <option value="">Sve</option>
+              {categories.map((category) => (
+                <option key={category.slug} value={category.slug}>
+                  {category.name}
+                </option>
+              ))}
+            </Select>
 
-        <Input
-          id="minPrice"
-          label="Min. cijena"
-          type="number"
-          min={0}
-          step={0.01}
-          placeholder="0"
-          value={filters.minPrice}
-          onChange={(e) => handlePriceChange("minPrice", e.target.value)}
-          onKeyDown={blockNegativeKey}
-        />
+            <Input
+              id="minPrice"
+              label="Min. cijena"
+              type="number"
+              min={0}
+              step={0.01}
+              placeholder="0"
+              value={filters.minPrice}
+              onChange={(e) => handlePriceChange("minPrice", e.target.value)}
+              onKeyDown={blockNegativeKey}
+            />
 
-        <Input
-          id="maxPrice"
-          label="Max. cijena"
-          type="number"
-          min={0}
-          step={0.01}
-          placeholder="9999"
-          value={filters.maxPrice}
-          onChange={(e) => handlePriceChange("maxPrice", e.target.value)}
-          onKeyDown={blockNegativeKey}
-        />
+            <Input
+              id="maxPrice"
+              label="Max. cijena"
+              type="number"
+              min={0}
+              step={0.01}
+              placeholder="9999"
+              value={filters.maxPrice}
+              onChange={(e) => handlePriceChange("maxPrice", e.target.value)}
+              onKeyDown={blockNegativeKey}
+            />
+          </div>
+        </div>
       </div>
 
       <div className={styles.toolbar}>
