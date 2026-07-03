@@ -1,7 +1,7 @@
-import Button from "@/components/common/Button";
+import { Button } from "@/components/common";
 import clsx from "clsx";
-import styles from "./Pagination.module.scss";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import styles from "./Pagination.module.scss";
 
 type PaginationProps = {
   page: number;

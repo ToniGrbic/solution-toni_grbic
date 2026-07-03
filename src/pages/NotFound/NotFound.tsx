@@ -1,4 +1,4 @@
-import Button from "@/components/common/Button";
+import { Button } from "@/components/common";
 import { ButtonVariant, Routes } from "@/types/enums";
 import { Link, useNavigate } from "react-router";
 import styles from "./NotFound.module.scss";

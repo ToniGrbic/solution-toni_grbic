@@ -1,5 +1,4 @@
-import Button from "@/components/common/Button";
-import UserCenter from "@/components/common/UserCenter/UserCenter";
+import { Button, UserCenter } from "@/components/common";
 import { useAuth } from "@/context/AuthProvider";
 import useDismissiblePanel from "@/hooks/useDismissiblePanel";
 import { Routes } from "@/types/enums";
@@ -81,7 +80,7 @@ const Sidebar = () => {
         >
           Favoriti
         </NavLink>
-        {isAuthenticated ? (
+        {isAuthenticated && user ? (
           <>
             <Button unstyled className={styles.link} onClick={handleLogout}>
               Odjava

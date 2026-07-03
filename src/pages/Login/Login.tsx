@@ -1,7 +1,6 @@
-import Button from "@/components/common/Button";
-import { Routes } from "@/types/enums";
-import Input from "@/components/common/Input";
+import { Button, Input } from "@/components/common";
 import { useAuth } from "@/context/AuthProvider";
+import { Routes } from "@/types/enums";
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router";
 import styles from "./Login.module.scss";

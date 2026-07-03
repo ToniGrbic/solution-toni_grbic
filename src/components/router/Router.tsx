@@ -1,5 +1,5 @@
 import ProtectedRoute from "@/components/ProtectedRoute";
-import Layout from "@/components/layout/Layout";
+import { Layout } from "@/components/layout";
 import { Routes as AppRoutes } from "@/types/enums";
 import { lazy } from "react";
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";

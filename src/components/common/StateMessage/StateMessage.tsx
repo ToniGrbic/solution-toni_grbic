@@ -1,4 +1,4 @@
-import Button from "@/components/common/Button";
+import { Button } from "@/components/common";
 import { ButtonVariant, StateMessageVariant } from "@/types/enums";
 import clsx from "clsx";
 import type { ReactNode } from "react";

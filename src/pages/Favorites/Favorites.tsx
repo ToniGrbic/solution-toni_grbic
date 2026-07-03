@@ -1,9 +1,9 @@
 import {
   PageHeader,
+  ProductCard,
   ProductGridSkeleton,
   StateMessage,
 } from "@/components/common";
-import ProductCard from "@/components/common/ProductCard";
 import { useFavoriteProducts } from "@/hooks/api/useFavoriteProducts";
 import { useFavorites } from "@/hooks/useFavorites";
 import styles from "./Favorites.module.scss";

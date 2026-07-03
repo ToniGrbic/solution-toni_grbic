@@ -1,7 +1,5 @@
-import Button from "@/components/common/Button";
-import Sidebar from "@/components/layout/Sidebar";
-import ThemeToggle from "@/components/layout/ThemeToggle";
-import UserMenu from "@/components/layout/UserMenu";
+import { Button } from "@/components/common";
+import { Sidebar, ThemeToggle, UserMenu } from "@/components/layout";
 import { useAuth } from "@/context/AuthProvider";
 import { ButtonVariant, Routes } from "@/types/enums";
 import clsx from "clsx";

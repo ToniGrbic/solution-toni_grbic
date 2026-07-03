@@ -1,4 +1,4 @@
-import Button from "@/components/common/Button";
+import { Button } from "@/components/common";
 import { useAuth } from "@/context/AuthProvider";
 import { useFavorites } from "@/hooks/useFavorites";
 import { Routes } from "@/types/enums";
@@ -6,9 +6,9 @@ import type { Product } from "@/types/product";
 import { formatPrice, saveScrollPosition, truncateText } from "@/utils/helpers";
 import clsx from "clsx";
 import type { MouseEvent } from "react";
+import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { Link, useLocation } from "react-router";
 import styles from "./ProductCard.module.scss";
-import { IoHeart, IoHeartOutline } from "react-icons/io5";
 
 type ProductCardProps = {
   product: Product;

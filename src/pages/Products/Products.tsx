@@ -10,10 +10,10 @@ import { PAGE_SIZE } from "@/constants";
 import { useProducts } from "@/hooks/api/useProducts";
 import { useProductFilters } from "@/hooks/useProductFilters";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
+import { ViewMode } from "@/types/enums";
 import type { Product } from "@/types/product";
 import clsx from "clsx";
 import styles from "./Products.module.scss";
-import { ViewMode } from "@/types/enums";
 
 const Products = () => {
   useScrollRestoration();

@@ -1,4 +1,4 @@
-import Button from "@/components/common/Button";
+import { Button } from "@/components/common";
 import { useAuth } from "@/context/AuthProvider";
 import { useFavorites } from "@/hooks/useFavorites";
 import { Routes } from "@/types/enums";

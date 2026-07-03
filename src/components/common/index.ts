@@ -11,3 +11,4 @@ export {
   default as Skeleton,
 } from "./Skeleton";
 export { default as StateMessage } from "./StateMessage";
+export { default as UserCenter } from "./UserCenter";

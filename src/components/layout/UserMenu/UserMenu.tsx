@@ -1,5 +1,4 @@
-import Button from "@/components/common/Button";
-import UserCenter from "@/components/common/UserCenter";
+import { Button, UserCenter } from "@/components/common";
 import { useAuth } from "@/context/AuthProvider";
 import useDismissiblePanel from "@/hooks/useDismissiblePanel";
 import { useCallback, useId, useRef, useState } from "react";

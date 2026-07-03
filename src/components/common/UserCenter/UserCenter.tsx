@@ -1,4 +1,4 @@
-import Button from "@/components/common/Button";
+import { Button } from "@/components/common";
 import type { AuthUserResponse } from "@/types/auth";
 import clsx from "clsx";
 import { IoChevronDown } from "react-icons/io5";

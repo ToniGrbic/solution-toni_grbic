@@ -1,4 +1,4 @@
-import StateMessage from "@/components/common/StateMessage";
+import { StateMessage } from "@/components/common";
 import { Component, type ErrorInfo, type ReactNode } from "react";
 import styles from "./ErrorBoundary.module.scss";
 

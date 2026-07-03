@@ -1,5 +1,5 @@
 import { LoadingSpinner } from "@/components/common";
-import Header from "@/components/layout/Header";
+import { Header } from "@/components/layout";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 import { Outlet } from "react-router";
