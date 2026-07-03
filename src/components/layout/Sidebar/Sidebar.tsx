@@ -1,5 +1,7 @@
 import Button from "@/components/common/Button";
+import UserCenter from "@/components/common/UserCenter/UserCenter";
 import { useAuth } from "@/context/AuthProvider";
+import useDismissiblePanel from "@/hooks/useDismissiblePanel";
 import { Routes } from "@/types/enums";
 import clsx from "clsx";
 import { useCallback, useEffect, useId, useState } from "react";
@@ -9,7 +11,7 @@ import { NavLink, useLocation } from "react-router";
 import styles from "./Sidebar.module.scss";
 
 const Sidebar = () => {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, user } = useAuth();
   const location = useLocation();
   const menuId = useId();
   const [isOpen, setIsOpen] = useState(false);
@@ -21,22 +23,7 @@ const Sidebar = () => {
     close();
   }, [location.pathname, close]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    document.body.style.overflow = "hidden";
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [isOpen, close]);
+  useDismissiblePanel({ isOpen, onClose: close, lockScroll: true });
 
   const handleLogout = () => {
     close();
@@ -95,9 +82,18 @@ const Sidebar = () => {
           Favoriti
         </NavLink>
         {isAuthenticated ? (
-          <Button unstyled className={styles.link} onClick={handleLogout}>
-            Odjava
-          </Button>
+          <>
+            <Button unstyled className={styles.link} onClick={handleLogout}>
+              Odjava
+            </Button>
+            <UserCenter
+              user={user}
+              isOpen={isOpen}
+              toggle={toggle}
+              menuId={menuId}
+              hasChevron={false}
+            />
+          </>
         ) : (
           <NavLink to={Routes.LOGIN} className={linkClass} onClick={close}>
             Prijava
