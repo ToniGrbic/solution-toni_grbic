@@ -1,6 +1,7 @@
 import Button from "@/components/common/Button";
 import Sidebar from "@/components/layout/Sidebar";
 import ThemeToggle from "@/components/layout/ThemeToggle";
+import UserMenu from "@/components/layout/UserMenu";
 import { useAuth } from "@/context/AuthProvider";
 import { ButtonVariant, Routes } from "@/types/enums";
 import clsx from "clsx";
@@ -8,7 +9,7 @@ import { NavLink } from "react-router";
 import styles from "./Header.module.scss";
 
 const Header = () => {
-  const { isAuthenticated, user, logout } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     clsx(styles.link, isActive && styles.active);
@@ -48,15 +49,8 @@ const Header = () => {
           <ThemeToggle />
 
           <div className={styles.desktopActions}>
-            {isAuthenticated && user && (
-              <span className={styles.user}>
-                {user.firstName} {user.lastName}
-              </span>
-            )}
             {isAuthenticated ? (
-              <Button variant={ButtonVariant.GHOST} onClick={logout}>
-                Odjava
-              </Button>
+              <UserMenu />
             ) : (
               <NavLink to={Routes.LOGIN}>
                 <Button variant={ButtonVariant.SECONDARY}>Prijava</Button>
