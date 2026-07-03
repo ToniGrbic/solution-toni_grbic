@@ -6,7 +6,7 @@ import {
 import ProductCard from "@/components/common/ProductCard";
 import { useFavoriteProducts } from "@/hooks/api/useFavoriteProducts";
 import { useFavorites } from "@/hooks/useFavorites";
-import styles from "./index.module.scss";
+import styles from "./Favorites.module.scss";
 
 const Favorites = () => {
   const { favorites } = useFavorites();

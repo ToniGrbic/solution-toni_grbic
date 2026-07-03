@@ -10,7 +10,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { IoMdStar } from "react-icons/io";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { Link, useLocation, useNavigate, useParams } from "react-router";
-import styles from "./index.module.scss";
+import styles from "./ProductDetail.module.scss";
 
 const getStockStatus = (stock: number) => {
   if (stock <= 0)

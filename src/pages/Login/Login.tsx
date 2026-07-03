@@ -4,7 +4,7 @@ import Input from "@/components/common/Input";
 import { useAuth } from "@/context/AuthProvider";
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router";
-import styles from "./index.module.scss";
+import styles from "./Login.module.scss";
 
 const Login = () => {
   const { login, isAuthenticated } = useAuth();

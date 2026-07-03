@@ -12,7 +12,7 @@ import { useProductFilters } from "@/hooks/useProductFilters";
 import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import type { Product } from "@/types/product";
 import clsx from "clsx";
-import styles from "./index.module.scss";
+import styles from "./Products.module.scss";
 import { ViewMode } from "@/types/enums";
 
 const Products = () => {
