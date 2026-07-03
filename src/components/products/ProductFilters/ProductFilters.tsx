@@ -80,7 +80,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
       >
         <IoFilter />
         {filtersExpanded ? "Sakrij filtere" : "Prikaži filtere"}
-        {hasActiveFilters && !filtersExpanded && (
+        {hasActiveFilters && (
           <span className={styles.activeBadge} aria-hidden />
         )}
       </Button>
