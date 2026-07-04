@@ -16,10 +16,7 @@ const Favorites = () => {
   const [page, setPage] = useState(1);
 
   const totalPages = Math.max(1, Math.ceil(favorites.length / PAGE_SIZE));
-  const pageIds = favorites.slice(
-    (page - 1) * PAGE_SIZE,
-    page * PAGE_SIZE,
-  );
+  const pageIds = favorites.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   useEffect(() => {
     // this can happen when removing all items from page on card heart button click
