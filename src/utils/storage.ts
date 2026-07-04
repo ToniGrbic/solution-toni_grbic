@@ -1,5 +1,5 @@
 import { FAVORITES_KEY, TOKEN_KEY, USER_KEY } from "@/constants";
-import type { AuthUserResponse } from "@/types/auth";
+import type { AuthUserResponse, LoginResponse } from "@/types/auth";
 
 export const getStoredToken = (): string | null =>
   localStorage.getItem(TOKEN_KEY);
@@ -11,6 +11,12 @@ export const setAuthStorage = (user: AuthUserResponse): void => {
   const { accessToken, refreshToken, ...userData } = user;
   localStorage.setItem(TOKEN_KEY, accessToken);
   localStorage.setItem(USER_KEY, JSON.stringify(userData));
+};
+
+export const updateStoredUser = (
+  user: LoginResponse
+): void => {
+  localStorage.setItem(USER_KEY, JSON.stringify(user));
 };
 
 export const clearAuthStorage = (): void => {

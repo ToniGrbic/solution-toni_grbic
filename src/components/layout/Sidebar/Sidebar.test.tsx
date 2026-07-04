@@ -24,6 +24,7 @@ describe("Sidebar", () => {
   it("shows nav links when the hamburger menu is opened", () => {
     vi.mocked(useAuth).mockReturnValue({
       isAuthenticated: false,
+      isLoading: false,
       user: null,
       login: vi.fn(),
       logout: vi.fn(),

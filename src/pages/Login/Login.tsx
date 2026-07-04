@@ -1,4 +1,4 @@
-import { Button, Input } from "@/components/common";
+import { Button, Input, LoadingSpinner } from "@/components/common";
 import { useAuth } from "@/context/AuthProvider";
 import { Routes } from "@/types/enums";
 import { useState } from "react";
@@ -6,7 +6,7 @@ import { Navigate, useLocation, useNavigate } from "react-router";
 import styles from "./Login.module.scss";
 
 const Login = () => {
-  const { login, isAuthenticated } = useAuth();
+  const { login, isAuthenticated, isLoading } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from =
@@ -16,6 +16,10 @@ const Login = () => {
   const [password, setPassword] = useState("emilyspass");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  if (isLoading) {
+    return <LoadingSpinner label="Provjera prijave..." />;
+  }
 
   if (isAuthenticated) {
     return <Navigate to={from} replace />;

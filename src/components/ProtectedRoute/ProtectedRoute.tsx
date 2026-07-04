@@ -1,3 +1,4 @@
+import { LoadingSpinner } from "@/components/common";
 import { useAuth } from "@/context/AuthProvider";
 import { Routes } from "@/types/enums";
 import type { ReactNode } from "react";
@@ -8,8 +9,12 @@ interface ProtectedRouteProps {
 }
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
+
+  if (isLoading) {
+    return <LoadingSpinner label="Provjera prijave..." />;
+  }
 
   if (!isAuthenticated) {
     return (

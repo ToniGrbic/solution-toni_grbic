@@ -1,15 +1,16 @@
-import { login as loginRequest } from "@/api/auth";
-import type { AuthUserResponse, LoginCredentials } from "@/types/auth";
+import { getMe, login as loginRequest } from "@/api/auth";
+import type { AuthUserResponse, LoginCredentials, LoginResponse } from "@/types/auth";
 import {
   clearAuthStorage,
   getStoredToken,
-  getStoredUser,
   setAuthStorage,
+  updateStoredUser,
 } from "@/utils/storage";
 import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -18,6 +19,7 @@ import {
 type AuthContextValue = {
   user: AuthUserResponse | null;
   isAuthenticated: boolean;
+  isLoading: boolean;
   login: (credentials: LoginCredentials) => Promise<void>;
   logout: () => void;
 };
@@ -28,22 +30,41 @@ interface AuthProviderProps {
 
 const AuthContext = createContext<AuthContextValue | null>(null);
 
-const readStoredUser = (): AuthUserResponse | null => {
-  const raw = getStoredUser();
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw) as AuthUserResponse;
-  } catch {
-    return null;
-  }
-};
+const toAuthUser = (
+  user: LoginResponse,
+  accessToken: string,
+): AuthUserResponse => ({
+  ...user,
+  accessToken,
+  refreshToken: "",
+});
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<AuthUserResponse | null>(() => {
-    const token = getStoredToken();
-    if (!token) return null;
-    return readStoredUser();
-  });
+  const [user, setUser] = useState<AuthUserResponse | null>(null);
+  const [isLoading, setIsLoading] = useState(() => Boolean(getStoredToken()));
+
+  useEffect(() => {
+    const validateSession = async () => {
+      const token = getStoredToken();
+      if (!token) {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const me = await getMe();
+        updateStoredUser(me);
+        setUser(toAuthUser(me, token));
+      } catch {
+        clearAuthStorage();
+        setUser(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    void validateSession();
+  }, []);
 
   const login = useCallback(async (credentials: LoginCredentials) => {
     const response = await loginRequest(credentials);
@@ -60,10 +81,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     () => ({
       user,
       isAuthenticated: Boolean(user && getStoredToken()),
+      isLoading,
       login,
       logout,
     }),
-    [user, login, logout],
+    [user, isLoading, login, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
