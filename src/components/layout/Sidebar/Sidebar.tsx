@@ -41,6 +41,7 @@ const Sidebar = () => {
         aria-expanded={isOpen}
         aria-controls={menuId}
         aria-label={isOpen ? "Zatvori izbornik" : "Otvori izbornik"}
+        data-testid="sidebar-menu-toggle"
       >
         <span className={styles.toggleIcon} aria-hidden="true">
           {isOpen ? <AiOutlineClose /> : <RxHamburgerMenu />}
@@ -61,6 +62,7 @@ const Sidebar = () => {
         className={clsx(styles.sidebar, isOpen && styles.open)}
         aria-label="Mobilna navigacija"
         inert={!isOpen}
+        data-testid="sidebar-nav"
       >
         <NavLink
           to={Routes.PRODUCTS}
@@ -68,6 +70,7 @@ const Sidebar = () => {
           onClick={close}
           viewTransition
           prefetch="intent"
+          data-testid="sidebar-link-products"
         >
           Proizvodi
         </NavLink>
@@ -77,6 +80,7 @@ const Sidebar = () => {
           onClick={close}
           viewTransition
           prefetch="intent"
+          data-testid="sidebar-link-favorites"
         >
           Favoriti
         </NavLink>
@@ -94,7 +98,12 @@ const Sidebar = () => {
             />
           </>
         ) : (
-          <NavLink to={Routes.LOGIN} className={linkClass} onClick={close}>
+          <NavLink
+            to={Routes.LOGIN}
+            className={linkClass}
+            onClick={close}
+            data-testid="sidebar-link-login"
+          >
             Prijava
           </NavLink>
         )}
