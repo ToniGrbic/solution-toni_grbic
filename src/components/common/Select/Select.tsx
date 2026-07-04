@@ -2,13 +2,13 @@ import clsx from "clsx";
 import type { ReactNode, SelectHTMLAttributes } from "react";
 import styles from "./Select.module.scss";
 
-type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   label: string;
   error?: string;
   id?: string;
   fieldClassName?: string;
   children: ReactNode;
-};
+}
 
 const Select = ({
   label,

@@ -2,11 +2,11 @@ import { StateMessage } from "@/components/common";
 import { Component, type ErrorInfo, type ReactNode } from "react";
 import styles from "./ErrorBoundary.module.scss";
 
-type ErrorBoundaryProps = {
+interface ErrorBoundaryProps {
   children: ReactNode;
   fallback?: ReactNode;
   onReset?: () => void;
-};
+}
 
 type ErrorBoundaryState = {
   hasError: boolean;

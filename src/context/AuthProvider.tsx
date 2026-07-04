@@ -22,6 +22,10 @@ type AuthContextValue = {
   logout: () => void;
 };
 
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
 const AuthContext = createContext<AuthContextValue | null>(null);
 
 const readStoredUser = (): AuthUserResponse | null => {
@@ -34,7 +38,7 @@ const readStoredUser = (): AuthUserResponse | null => {
   }
 };
 
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<AuthUserResponse | null>(() => {
     const token = getStoredToken();
     if (!token) return null;

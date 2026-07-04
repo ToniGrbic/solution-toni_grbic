@@ -19,9 +19,13 @@ type ThemeContextValue = {
   toggleTheme: () => void;
 };
 
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setThemeState] = useState<Theme>(() => getPreferredTheme());
 
   const setTheme = useCallback((next: Theme) => {

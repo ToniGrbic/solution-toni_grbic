@@ -4,27 +4,27 @@ import clsx from "clsx";
 import type { ReactNode } from "react";
 import styles from "./StateMessage.module.scss";
 
-type StateMessageProps = {
+interface StateMessageProps {
   title: string;
   message: string;
   icon?: ReactNode;
   actionLabel?: string;
   onAction?: () => void;
   variant?: StateMessageVariant;
-};
+}
 
-type ErrorProps = {
+interface ErrorProps {
   title?: string;
   message?: string;
   icon?: ReactNode;
   actionLabel?: string;
   onRetry: () => void;
-};
+}
 
-type EmptyProps = {
+interface EmptyProps {
   title?: string;
   message: string;
-};
+}
 
 const StateMessageBase = ({
   title,

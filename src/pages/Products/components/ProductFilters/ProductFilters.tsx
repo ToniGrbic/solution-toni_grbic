@@ -11,10 +11,10 @@ import { useEffect, useState } from "react";
 import { IoFilter } from "react-icons/io5";
 import styles from "./ProductFilters.module.scss";
 
-type ProductFiltersProps = {
+interface ProductFiltersProps {
   filters: Filters;
   onChange: (updates: Partial<Filters>) => void;
-};
+}
 
 const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
   const { data: categories = [] } = useCategories();

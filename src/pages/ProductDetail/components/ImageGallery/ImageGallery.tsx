@@ -4,10 +4,10 @@ import clsx from "clsx";
 import { useState } from "react";
 import styles from "./ImageGallery.module.scss";
 
-type ImageGalleryProps = {
+interface ImageGalleryProps {
   images: string[];
   title: string;
-};
+}
 
 const ImageGallery = ({ images, title }: ImageGalleryProps) => {
   const [activeIndex, setActiveIndex] = useState(0);

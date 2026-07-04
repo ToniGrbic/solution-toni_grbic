@@ -2,13 +2,13 @@ import clsx from "clsx";
 import type { InputHTMLAttributes } from "react";
 import styles from "./Input.module.scss";
 
-type InputProps = InputHTMLAttributes<HTMLInputElement> & {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
   hint?: string;
   id?: string;
   fieldClassName?: string;
-};
+}
 
 const Input = ({
   label,

@@ -10,9 +10,9 @@ import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { Link, useLocation } from "react-router";
 import styles from "./ProductCard.module.scss";
 
-type ProductCardProps = {
+interface ProductCardProps {
   product: Product;
-};
+}
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const location = useLocation();

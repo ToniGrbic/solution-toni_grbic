@@ -3,12 +3,12 @@ import clsx from "clsx";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 import styles from "./Pagination.module.scss";
 
-type PaginationProps = {
+interface PaginationProps {
   page: number;
   totalPages: number;
   onPageChange: (page: number) => void;
   label: string;
-};
+}
 
 const Pagination = ({
   page,

@@ -5,9 +5,9 @@ import { Suspense } from "react";
 import { Outlet } from "react-router";
 import styles from "./Layout.module.scss";
 
-type LayoutProps = {
+interface LayoutProps {
   children?: ReactNode;
-};
+}
 
 const Layout = ({ children }: LayoutProps) => (
   <div className={styles.layout}>

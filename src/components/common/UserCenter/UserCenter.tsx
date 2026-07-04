@@ -4,13 +4,13 @@ import clsx from "clsx";
 import { IoChevronDown } from "react-icons/io5";
 import styles from "./UserCenter.module.scss";
 
-type UserCenterProps = {
+interface UserCenterProps {
   user: AuthUserResponse;
   isOpen: boolean;
   toggle: () => void;
   menuId: string;
   hasChevron?: boolean;
-};
+}
 
 const UserCenter = ({ user, isOpen, toggle, menuId, hasChevron = true }: UserCenterProps) => {
   const displayName =

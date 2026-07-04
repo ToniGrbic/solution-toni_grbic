@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import styles from "./LoadingSpinner.module.scss";
 
-type LoadingSpinnerProps = {
+interface LoadingSpinnerProps {
   label?: string;
   className?: string;
-};
+}
 
 const LoadingSpinner = ({
   label = "Učitavanje",

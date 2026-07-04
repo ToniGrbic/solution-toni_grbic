@@ -9,9 +9,9 @@ import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router";
 import styles from "./ProductTable.module.scss";
 
-type ProductTableProps = {
+interface ProductTableProps {
   products: Product[];
-};
+}
 
 const ProductTable = ({ products }: ProductTableProps) => {
   const location = useLocation();

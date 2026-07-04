@@ -1,9 +1,9 @@
 import styles from "./PageHeader.module.scss";
 
-type PageHeaderProps = {
+interface PageHeaderProps {
   title: string;
   subtitle: string;
-};
+}
 
 const PageHeader = ({ title, subtitle }: PageHeaderProps) => {
   return (
