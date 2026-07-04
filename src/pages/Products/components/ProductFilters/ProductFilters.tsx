@@ -64,6 +64,17 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
     }
   };
 
+  const minPriceNum = Number(filters.minPrice);
+  const maxPriceNum = Number(filters.maxPrice);
+  const hasValidMinPrice =
+    filters.minPrice !== "" && Number.isFinite(minPriceNum);
+  const hasValidMaxPrice =
+    filters.maxPrice !== "" && Number.isFinite(maxPriceNum);
+  const maxPriceError =
+    hasValidMinPrice && hasValidMaxPrice && maxPriceNum < minPriceNum
+      ? "Max. cijena ne može biti manja od Min. cijene"
+      : undefined;
+
   return (
     <section className={styles.filters} aria-label="Filteri proizvoda">
       <Button
@@ -131,6 +142,7 @@ const ProductFilters = ({ filters, onChange }: ProductFiltersProps) => {
               step={0.01}
               placeholder="9999"
               value={filters.maxPrice}
+              error={maxPriceError}
               onChange={(e) => handlePriceChange("maxPrice", e.target.value)}
               onKeyDown={blockNegativeKey}
             />

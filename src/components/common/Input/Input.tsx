@@ -46,11 +46,10 @@ const Input = ({
           {hint}
         </span>
       )}
-      {error && (
-        <span id={`${inputId}-error`} className={styles.error} role="alert">
-          {error}
-        </span>
-      )}
+
+      <span id={`${inputId}-error`} className={styles.error} role="alert">
+        {error}
+      </span>
     </div>
   );
 };
