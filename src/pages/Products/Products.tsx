@@ -5,7 +5,6 @@ import {
   ProductGridSkeleton,
   StateMessage,
 } from "@/components/common";
-import { ProductFilters, ProductTable } from "@/components/products";
 import { PAGE_SIZE } from "@/constants";
 import { useProducts } from "@/hooks/api/useProducts";
 import { useProductFilters } from "@/hooks/useProductFilters";
@@ -13,6 +12,7 @@ import { useScrollRestoration } from "@/hooks/useScrollRestoration";
 import { ViewMode } from "@/types/enums";
 import type { Product } from "@/types/product";
 import clsx from "clsx";
+import { ProductFilters, ProductTable } from "./components";
 import styles from "./Products.module.scss";
 
 const Products = () => {
