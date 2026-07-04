@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.resultsInfo {
+  margin-bottom: var(--space-md);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
