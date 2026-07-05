@@ -10,6 +10,7 @@ Prije instalacije provjerite da imate instalirano:
 
 - **Node.js** — verzija 18 ili novija (preporučeno LTS)
 - **Yarn** — upravitelj paketa (projekt koristi `yarn.lock`)
+- **Docker Desktop** (opcionalno) — za pokretanje aplikacije u kontejnerima
 
 Provjeru verzije možete napraviti naredbama:
 
@@ -101,6 +102,43 @@ yarn preview
 
 ```bash
 yarn lint
+```
+
+### Docker
+
+Aplikaciju možete pokrenuti i putem Docker Composea, bez lokalne instalacije Node.js ovisnosti. Naredbe pokrećite iz korijenskog direktorija projekta (gdje se nalazi `docker-compose.yml`).
+
+#### Razvoj (hot reload)
+
+```bash
+docker compose up --build
+```
+
+Aplikacija je dostupna na [http://localhost:5173](http://localhost:5173). Vite dev server podržava hot reload — promjene u izvornom kodu automatski se reflektiraju u pregledniku.
+
+Zaustavljanje kontejnera:
+
+```bash
+docker compose down
+```
+
+#### Produkcija (nginx)
+
+```bash
+docker compose --profile prod up --build
+```
+
+Aplikacija je dostupna na [http://localhost:8080](http://localhost:8080). Kontejner gradi statičke datoteke (`yarn build`) i servira ih putem nginx-a.
+
+**Napomene za Docker:**
+
+- Datoteka `.env` nije obavezna — ako je nema, koristi se zadana vrijednost `VITE_API_BASE_URL=https://dummyjson.com`.
+- U razvojnom okruženju varijable se učitavaju pri pokretanju kontejnera.
+- U produkcijskom okruženju `VITE_API_BASE_URL` ugrađuje se u build pri izgradnji slike — nakon promjene varijable ponovno pokrenite build (`docker compose --profile prod up --build`).
+- Za promjenu API URL-a pri buildu možete koristiti i inline varijablu:
+
+```bash
+VITE_API_BASE_URL=https://dummyjson.com docker compose --profile prod up --build
 ```
 
 ## Tehnologije
