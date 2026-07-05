@@ -1,5 +1,5 @@
 import { Button, StateMessage } from "@/components/common";
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import { useProduct } from "@/hooks/api/useProduct";
 import { useFavorites } from "@/hooks/useFavorites";
 import ImageGallery from "@/pages/ProductDetail/components/ImageGallery";

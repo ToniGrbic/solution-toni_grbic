@@ -1,4 +1,4 @@
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import { Routes } from "@/types/enums";
 import { cleanup, render, screen } from "@testing-library/react";
 import {
@@ -10,7 +10,7 @@ import {
 import { afterEach, describe, expect, it, vi } from "vitest";
 import ProtectedRoute from "./ProtectedRoute";
 
-vi.mock("@/context/AuthProvider", () => ({
+vi.mock("@/context/auth/useAuth", () => ({
   useAuth: vi.fn(),
 }));
 

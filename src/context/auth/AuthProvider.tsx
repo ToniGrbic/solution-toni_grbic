@@ -1,5 +1,9 @@
 import { getMe, login as loginRequest } from "@/api/auth";
-import type { AuthUserResponse, LoginCredentials, LoginResponse } from "@/types/auth";
+import type {
+  AuthUserResponse,
+  LoginCredentials,
+  LoginResponse,
+} from "@/types/auth";
 import {
   clearAuthStorage,
   getStoredToken,
@@ -7,28 +11,17 @@ import {
   updateStoredUser,
 } from "@/utils/storage";
 import {
-  createContext,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useState,
   type ReactNode,
 } from "react";
-
-type AuthContextValue = {
-  user: AuthUserResponse | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  login: (credentials: LoginCredentials) => Promise<void>;
-  logout: () => void;
-};
+import { AuthContext } from "./authContext";
 
 interface AuthProviderProps {
   children: ReactNode;
 }
-
-const AuthContext = createContext<AuthContextValue | null>(null);
 
 const toAuthUser = (
   user: LoginResponse,
@@ -89,12 +82,4 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-};
-
-export const useAuth = (): AuthContextValue => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error("useAuth must be used within AuthProvider");
-  }
-  return context;
 };

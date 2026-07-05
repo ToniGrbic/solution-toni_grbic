@@ -8,7 +8,7 @@ import {
 import { PAGE_SIZE } from "@/constants";
 import { useFavoriteProducts } from "@/hooks/api/useFavoriteProducts";
 import { useFavorites } from "@/hooks/useFavorites";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Favorites.module.scss";
 
 const Favorites = () => {
@@ -16,14 +16,11 @@ const Favorites = () => {
   const [page, setPage] = useState(1);
 
   const totalPages = Math.max(1, Math.ceil(favorites.length / PAGE_SIZE));
-  const pageIds = favorites.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-
-  useEffect(() => {
-    // this can happen when removing all items from page on card heart button click
-    if (page > totalPages) {
-      setPage(totalPages);
-    }
-  }, [page, totalPages]);
+  const currentPage = Math.min(page, totalPages);
+  const pageIds = favorites.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE,
+  );
 
   const {
     data: products = [],
@@ -73,7 +70,7 @@ const Favorites = () => {
           </ul>
 
           <Pagination
-            page={page}
+            page={currentPage}
             totalPages={totalPages}
             onPageChange={setPage}
             label="Paginacija favorita"

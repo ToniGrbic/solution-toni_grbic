@@ -8,7 +8,8 @@ export const getStoredUser = (): string | null =>
   localStorage.getItem(USER_KEY);
 
 export const setAuthStorage = (user: AuthUserResponse): void => {
-  const { accessToken, refreshToken, ...userData } = user;
+  const { accessToken, ...rest } = user;
+  const { refreshToken: _, ...userData } = rest;
   localStorage.setItem(TOKEN_KEY, accessToken);
   localStorage.setItem(USER_KEY, JSON.stringify(userData));
 };

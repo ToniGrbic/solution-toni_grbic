@@ -1,12 +1,12 @@
-import { useAuth } from "@/context/AuthProvider";
-import { ThemeProvider } from "@/context/ThemeProvider";
+import { useAuth } from "@/context/auth/useAuth";
+import { ThemeProvider } from "@/context/theme/ThemeProvider";
 import { Routes } from "@/types/enums";
 import { cleanup, render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import Header from "./Header";
 
-vi.mock("@/context/AuthProvider", () => ({
+vi.mock("@/context/auth/useAuth", () => ({
   useAuth: vi.fn(),
 }));
 
@@ -46,14 +46,12 @@ describe("Header", () => {
 
     const nav = screen.getByRole("navigation", { name: "Glavna navigacija" });
 
-    expect(screen.getByRole("link", { name: "Katalog proizvoda" })).toHaveAttribute(
-      "href",
-      Routes.PRODUCTS,
-    );
-    expect(within(nav).getByRole("link", { name: "Proizvodi" })).toHaveAttribute(
-      "href",
-      Routes.PRODUCTS,
-    );
+    expect(
+      screen.getByRole("link", { name: "Katalog proizvoda" }),
+    ).toHaveAttribute("href", Routes.PRODUCTS);
+    expect(
+      within(nav).getByRole("link", { name: "Proizvodi" }),
+    ).toHaveAttribute("href", Routes.PRODUCTS);
     expect(within(nav).getByRole("link", { name: "Favoriti" })).toHaveAttribute(
       "href",
       Routes.FAVORITES,

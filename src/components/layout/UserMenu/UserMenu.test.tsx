@@ -1,10 +1,10 @@
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import type { AuthUserResponse } from "@/types/auth";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import UserMenu from "./UserMenu";
 
-vi.mock("@/context/AuthProvider", () => ({
+vi.mock("@/context/auth/useAuth", () => ({
   useAuth: vi.fn(),
 }));
 

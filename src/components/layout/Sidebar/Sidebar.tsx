@@ -1,5 +1,5 @@
 import { Button, UserCenter } from "@/components/common";
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import useDismissiblePanel from "@/hooks/useDismissiblePanel";
 import { Routes } from "@/types/enums";
 import clsx from "clsx";

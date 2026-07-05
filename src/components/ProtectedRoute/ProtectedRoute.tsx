@@ -1,5 +1,5 @@
 import { LoadingSpinner } from "@/components/common";
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import { Routes } from "@/types/enums";
 import type { ReactNode } from "react";
 import { Navigate, useLocation } from "react-router";

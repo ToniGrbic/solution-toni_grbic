@@ -1,7 +1,7 @@
 import { Routes as AppRoutes } from "@/types/enums";
 import type { RouteObject } from "react-router";
 import { describe, expect, it } from "vitest";
-import { router } from "./Router";
+import { router } from "./router.config";
 
 const collectPaths = (routes: RouteObject[]): string[] =>
   routes.flatMap((route) => [

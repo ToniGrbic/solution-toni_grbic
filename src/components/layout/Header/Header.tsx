@@ -1,6 +1,6 @@
 import { Button } from "@/components/common";
 import { Sidebar, ThemeToggle, UserMenu } from "@/components/layout";
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import { ButtonVariant, Routes } from "@/types/enums";
 import clsx from "clsx";
 import { NavLink } from "react-router";

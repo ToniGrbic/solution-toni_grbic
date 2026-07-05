@@ -1,10 +1,10 @@
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import Sidebar from "./Sidebar";
 
-vi.mock("@/context/AuthProvider", () => ({
+vi.mock("@/context/auth/useAuth", () => ({
   useAuth: vi.fn(),
 }));
 

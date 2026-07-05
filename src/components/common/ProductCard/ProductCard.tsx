@@ -1,5 +1,5 @@
 import { Button } from "@/components/common";
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import { useFavorites } from "@/hooks/useFavorites";
 import { Routes } from "@/types/enums";
 import type { Product } from "@/types/product";

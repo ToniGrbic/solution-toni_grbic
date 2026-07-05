@@ -1,29 +1,15 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import type { Theme } from "@/types/enums";
 import {
   applyTheme,
   getPreferredTheme,
   toggleTheme as toggleThemeUtil,
 } from "@/utils/theme";
-import type { Theme } from "@/types/enums";
-
-type ThemeContextValue = {
-  theme: Theme;
-  setTheme: (theme: Theme) => void;
-  toggleTheme: () => void;
-};
+import { useCallback, useMemo, useState, type ReactNode } from "react";
+import { ThemeContext } from "./themeContext";
 
 interface ThemeProviderProps {
   children: ReactNode;
 }
-
-const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setThemeState] = useState<Theme>(() => getPreferredTheme());
@@ -46,13 +32,3 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 };
-
-export const useTheme = (): ThemeContextValue => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within ThemeProvider");
-  }
-  return context;
-};
-
-export { getPreferredTheme };

@@ -1,5 +1,5 @@
 import { Button, Input, LoadingSpinner } from "@/components/common";
-import { useAuth } from "@/context/AuthProvider";
+import { useAuth } from "@/context/auth/useAuth";
 import { Routes } from "@/types/enums";
 import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router";

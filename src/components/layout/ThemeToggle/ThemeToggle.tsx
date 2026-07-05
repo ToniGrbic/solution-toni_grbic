@@ -1,9 +1,9 @@
 import Button from "@/components/common/Button";
-import { useTheme } from "@/context/ThemeProvider";
+import { useTheme } from "@/context/theme/useTheme";
 import { Theme } from "@/types/enums";
-import styles from "./ThemeToggle.module.scss";
-import { MdSunny } from "react-icons/md";
 import { FaRegMoon } from "react-icons/fa";
+import { MdSunny } from "react-icons/md";
+import styles from "./ThemeToggle.module.scss";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
@@ -17,7 +17,7 @@ const ThemeToggle = () => {
       aria-label={isDark ? "Uključi svijetlu temu" : "Uključi tamnu temu"}
       aria-pressed={isDark}
     >
-      {isDark ? <MdSunny/> : <FaRegMoon/>}
+      {isDark ? <MdSunny /> : <FaRegMoon />}
     </Button>
   );
 };
