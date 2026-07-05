@@ -98,6 +98,14 @@ yarn preview
 yarn lint
 ```
 
+### Test
+
+Unit testovi za komponente
+
+```bash
+yarn test
+```
+
 ### Docker
 
 Aplikaciju možete pokrenuti i putem Docker Composea, bez lokalne instalacije Node.js ovisnosti. Naredbe pokrećite iz korijenskog direktorija projekta (gdje se nalazi `docker-compose.yml`).
@@ -182,7 +190,7 @@ Svaka komponenta sadrži vlastitu mapu s `.tsx` datotekom, `.module.scss` stilov
 
 ## Korištenje AI-ja
 
-Za projekt je korišten Cursor sa Composer 2.5 Fast modelom. Birao sam ga jer daje solidne rezultate, a jako je brz u usporedbi sa primjerice Claude modelima. Način na koji sam koristio je promptat za napravit prvu radnu verziju nekog featura ili za refaktoriranje. Nakon što napravi prvu verziju koda za feature, proučavam kod i pitam ga sve što mi nije jasno. Popratnim promptovima ili manulano poboljšavam kod i rješavam bugove.
+Za projekt je korišten Cursor sa Composer 2.5 Fast modelom. Birao sam ga jer daje solidne rezultate, a jako je brz u usporedbi sa primjerice Claude modelima. Način na koji sam koristio je promptat za napravit prvu radnu verziju nekog featura, testova ili za refaktoriranje. Nakon što napravi prvu verziju koda za feature, proučavam kod i pitam ga sve što mi nije jasno. Popratnim promptovima ili manulano poboljšavam kod i rješavam bugove.
 
 ### Primjer prompta za napraviti feature
 
