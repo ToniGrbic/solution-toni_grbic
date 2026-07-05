@@ -146,3 +146,47 @@ VITE_API_BASE_URL=https://dummyjson.com docker compose --profile prod up --build
 - React 19, TypeScript, Vite
 - React Router, TanStack Query, Axios
 - SCSS moduli
+
+## Struktura projekta
+
+```
+solution-toni_grbic/
+├── .github/workflows/     # GitHub Actions (lint, test, build)
+├── public/                # Statičke datoteke (favicon, OG slika)
+├── src/
+│   ├── api/               # HTTP klijent i API pozivi (auth, proizvodi)
+│   ├── assets/            # Fontovi i ostali resursi
+│   ├── components/
+│   │   ├── common/        # Ponovno upotrebljive UI komponente (Button, Input, Pagination, …)
+│   │   ├── layout/        # Layout, Header, Sidebar, UserMenu, ThemeToggle
+│   │   ├── router/        # React Router konfiguracija i Router komponenta
+│   │   ├── ErrorBoundary/ # Globalni hvatač grešaka
+│   │   └── ProtectedRoute/# Zaštita ruta za autentificirane korisnike
+│   ├── constants/         # Konstante (storage ključevi, query ključevi, PAGE_SIZE)
+│   ├── context/
+│   │   ├── auth/          # AuthProvider, authContext, useAuth
+│   │   └── theme/         # ThemeProvider, themeContext, useTheme
+│   ├── hooks/
+│   │   ├── api/           # TanStack Query hookovi (useProducts, useProduct, …)
+│   │   └── …              # Custom hookovi (useFavorites, useDismissiblePanel, …)
+│   ├── pages/
+│   │   ├── Products/      # Lista proizvoda (filtri, tablica)
+│   │   ├── ProductDetail/ # Detalji proizvoda
+│   │   ├── Favorites/     # Spremljeni proizvodi
+│   │   ├── Login/         # Prijava korisnika
+│   │   └── NotFound/      # 404 stranica
+│   ├── styles/            # Globalni SCSS, varijable, mixini
+│   ├── test/              # Vitest setup
+│   ├── types/             # TypeScript tipovi i enumi
+│   ├── utils/             # Pomoćne funkcije (storage, theme, helpers)
+│   └── main.tsx           # Ulazna točka aplikacije
+├── docker-compose.yml     # Docker okruženja (dev i prod)
+├── Dockerfile             # Produkcijska slika (build + nginx)
+├── Dockerfile.dev         # Razvojna slika (Vite dev server)
+├── nginx.conf             # Nginx konfiguracija za produkciju
+├── vite.config.ts         # Vite konfiguracija
+├── vitest.config.ts       # Vitest konfiguracija
+└── eslint.config.js       # ESLint pravila
+```
+
+Svaka komponenta obično sadrži vlastitu mapu s `.tsx` datotekom, `.module.scss` stilovima, `index.ts` barrel exportom i po potrebi test datotekom (`*.test.tsx`).
