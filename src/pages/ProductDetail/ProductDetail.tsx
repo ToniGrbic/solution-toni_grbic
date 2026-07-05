@@ -2,8 +2,10 @@ import { Button, StateMessage } from "@/components/common";
 import { useAuth } from "@/context/auth/useAuth";
 import { useProduct } from "@/hooks/api/useProduct";
 import { useFavorites } from "@/hooks/useFavorites";
-import ProductDetailSkeleton from "@/pages/ProductDetail/components/ProductDetailSkeleton";
-import ImageGallery from "@/pages/ProductDetail/components/ImageGallery";
+import {
+  ImageGallery,
+  ProductDetailSkeleton,
+} from "@/pages/ProductDetail/components";
 import { ButtonVariant, Routes } from "@/types/enums";
 import { formatPrice } from "@/utils/helpers";
 import clsx from "clsx";
