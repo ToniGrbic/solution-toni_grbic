@@ -31,7 +31,7 @@
 
 .title {
   margin: 0;
-  font-size: clamp(var(--space-lg), 3vw, var(--space-xl));
+  font-size: clamp(var(--font-size-lg), 3vw, var(--font-size-xl));
   line-height: 1.25;
 }
 
@@ -47,14 +47,14 @@
   gap: var(--space-xs);
   padding: 0.375rem 0.75rem;
   border-radius: 999px;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
   background: var(--color-surface-muted);
   color: var(--color-text-muted);
 }
 
 .price {
-  font-size: var(--space-lg);
+  font-size: var(--font-size-lg);
   font-weight: 700;
   color: var(--color-primary);
 }

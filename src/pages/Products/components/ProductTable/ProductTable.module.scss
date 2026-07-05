@@ -19,7 +19,7 @@
 }
 
 .table th {
-  font-size: 0.8rem;
+  font-size: var(--font-size-xs);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -54,7 +54,7 @@
 
 .description {
   max-width: 28ch;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
   color: var(--color-text-muted);
 }
 

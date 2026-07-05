@@ -5,7 +5,7 @@
 
 .title {
   margin: 0 0 var(--space-xs);
-  font-size: clamp(var(--space-lg), 4vw, var(--space-xl));
+  font-size: clamp(var(--font-size-lg), 4vw, var(--font-size-xl));
 }
 
 .subtitle {
