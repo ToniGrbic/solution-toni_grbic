@@ -196,13 +196,13 @@ Za projekt je korišten Cursor sa Composer 2.5 Fast modelom. Birao sam ga jer da
 
 `Make a zoom feature in the gallery image component for the image that is in focus, so that when I hover over the image it displays a small rectangle size 200x100px in the corner and inside it is a zoomed version of the part of the image @src/components/products/ImageGallery/ImageGallery.tsx`
 
-### Primjer prompta za refaktoriranje
+### Primjer promptova za refaktoriranje
 
 `@src/styles/\_mixins.scss:34-44 mixins flex-center is only used once and truncate is not used at all, check all the scss module files and see if you can apply them.`
 
-ili
-
 `Go through all components and everywhere where you find type for props turn into a interface.`
+
+`Make this into a separate component to the Header, call it Sidebar`
 
 ### Primjer prompta za pitanje
 
