@@ -1,15 +1,14 @@
 @use "@/styles/mixins" as *;
 
 .pagination {
-  display: flex;
+  @include flex-center;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
   gap: var(--space-sm);
   margin-top: var(--space-xl);
 }
 
 .btn {
+  @include flex-center;
   min-width: 2.5rem;
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--color-border);
@@ -18,9 +17,6 @@
   cursor: pointer;
   font-weight: 500;
   color: var(--color-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 40px;
 
   svg {

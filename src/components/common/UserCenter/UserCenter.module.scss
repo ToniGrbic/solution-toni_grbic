@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as *;
+
 .trigger {
   display: inline-flex;
   align-items: center;
@@ -28,12 +30,10 @@
 }
 
 .name {
+  @include truncate;
   max-width: 9rem;
-  overflow: hidden;
   font-size: var(--font-size-sm);
   font-weight: 500;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .chevron {

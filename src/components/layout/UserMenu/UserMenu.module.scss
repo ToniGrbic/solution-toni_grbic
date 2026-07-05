@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as *;
+
 .root {
   position: relative;
 }
@@ -40,19 +42,15 @@
 }
 
 .profileName {
-  overflow: hidden;
+  @include truncate;
   font-size: var(--font-size-sm);
   font-weight: 600;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .profileEmail {
-  overflow: hidden;
+  @include truncate;
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .menuItem {
