@@ -17,13 +17,13 @@
 
 .title {
   margin: 0 0 var(--space-xs);
-  font-size: 1.5rem;
+  font-size: var(--space-lg);
 }
 
 .subtitle {
   margin: 0 0 var(--space-lg);
   color: var(--color-text-muted);
-  font-size: 0.9375rem;
+  font-size: var(--space-md);
 }
 
 .form {
@@ -45,12 +45,12 @@
   padding: var(--space-md);
   border-radius: var(--radius-sm);
   background: var(--color-surface-muted);
-  font-size: 0.8125rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   line-height: 1.5;
 }
 
 .hint code {
   font-family: ui-monospace, monospace;
-  font-size: 0.8125rem;
+  font-size: 0.8rem;
 }

@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+  padding: var(--space-xs) var(--space-sm) var(--space-xs) var(--space-xs);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-surface);
@@ -20,8 +20,8 @@
 }
 
 .avatar {
-  width: 2rem;
-  height: 2rem;
+  width: var(--space-xl);
+  height: var(--space-xl);
   border-radius: 50%;
   object-fit: cover;
   background: var(--color-image-placeholder);
@@ -38,8 +38,8 @@
 
 .chevron {
   flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
+  width: var(--space-sm);
+  height: var(--space-sm);
   color: var(--color-text-muted);
   transition: transform 0.15s;
 

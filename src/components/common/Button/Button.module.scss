@@ -3,12 +3,15 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  padding: 0.625rem 1rem;
+  padding: 0.625rem var(--space-md);
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
 
   &:disabled {
     opacity: 0.6;

@@ -19,7 +19,7 @@
 }
 
 .table th {
-  font-size: 0.8125rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -64,7 +64,7 @@
 }
 
 .favorite {
-  padding: 0.25rem 0.5rem;
+  padding: var(--space-xs) var(--space-sm);
   border: none;
   background: transparent;
   cursor: pointer;
