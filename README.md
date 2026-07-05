@@ -189,4 +189,4 @@ solution-toni_grbic/
 └── eslint.config.js       # ESLint pravila
 ```
 
-Svaka komponenta obično sadrži vlastitu mapu s `.tsx` datotekom, `.module.scss` stilovima, `index.ts` barrel exportom i po potrebi test datotekom (`*.test.tsx`).
+Svaka komponenta sadrži vlastitu mapu s `.tsx` datotekom, `.module.scss` stilovima, `index.ts` barrel exportom i po potrebi test datotekom (`*.test.tsx`).
