@@ -31,7 +31,7 @@ npm install -g yarn
 
 ```bash
 git clone <url-repozitorija>
-cd Abysalto
+cd solution-toni_grbic
 ```
 
 2. Instalirajte ovisnosti:
@@ -57,12 +57,6 @@ Copy-Item .env.example .env
 ```
 
 2. Uredite `.env` prema potrebi. Dostupne varijable:
-
-| Varijabla | Opis | Zadana vrijednost |
-|-----------|------|-------------------|
-| `VITE_API_BASE_URL` | Bazni URL vanjskog API-ja za proizvode i autentifikaciju | `https://dummyjson.com` |
-
-Primjer sadržaja `.env` datoteke:
 
 ```env
 VITE_API_BASE_URL=https://dummyjson.com
@@ -135,11 +129,6 @@ Aplikacija je dostupna na [http://localhost:8080](http://localhost:8080). Kontej
 - Datoteka `.env` nije obavezna — ako je nema, koristi se zadana vrijednost `VITE_API_BASE_URL=https://dummyjson.com`.
 - U razvojnom okruženju varijable se učitavaju pri pokretanju kontejnera.
 - U produkcijskom okruženju `VITE_API_BASE_URL` ugrađuje se u build pri izgradnji slike — nakon promjene varijable ponovno pokrenite build (`docker compose --profile prod up --build`).
-- Za promjenu API URL-a pri buildu možete koristiti i inline varijablu:
-
-```bash
-VITE_API_BASE_URL=https://dummyjson.com docker compose --profile prod up --build
-```
 
 ## Tehnologije
 
@@ -190,3 +179,28 @@ solution-toni_grbic/
 ```
 
 Svaka komponenta sadrži vlastitu mapu s `.tsx` datotekom, `.module.scss` stilovima, `index.ts` barrel exportom i po potrebi test datotekom (`*.test.tsx`).
+
+## Korištenje AI-ja
+
+Za projekt je korišten Cursor sa Composer 2.5 Fast modelom. Birao sam ga jer daje solidne rezultate, a jako je brz u usporedbi sa primjerice Claude modelima. Način na koji sam koristio je promptat za napravit prvu radnu verziju nekog featura ili za refaktoriranje. Nakon što napravi prvu verziju koda za feature, proučavam kod i pitam ga sve što mi nije jasno. Popratnim promptovima ili manulano poboljšavam kod i rješavam bugove.
+
+### Primjer prompta za napraviti feature
+
+`Make a zoom feature in the gallery image component for the image that is in focus, so that when I hover over the image it displays a small rectangle size 200x100px in the corner and inside it is a zoomed version of the part of the image @src/components/products/ImageGallery/ImageGallery.tsx`
+
+### Primjer prompta za refaktoriranje
+
+`@src/styles/\_mixins.scss:34-44 mixins flex-center is only used once and truncate is not used at all, check all the scss module files and see if you can apply them.`
+
+ili
+
+`Go through all components and everywhere where you find type for props turn into a interface.`
+
+### Primjer prompta za pitanje
+
+`Explain to me the different ARIA attributes that are used in this project`
+
+### Primjer za bugfix
+
+`Hitting refresh on vercel deployed page gives 404, stack overflow says I should put:
+{ "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }] } in vercel.json at root, please check this`
