@@ -2,6 +2,7 @@ import { Button, StateMessage } from "@/components/common";
 import { useAuth } from "@/context/auth/useAuth";
 import { useProduct } from "@/hooks/api/useProduct";
 import { useFavorites } from "@/hooks/useFavorites";
+import ProductDetailSkeleton from "@/pages/ProductDetail/components/ProductDetailSkeleton";
 import ImageGallery from "@/pages/ProductDetail/components/ImageGallery";
 import { ButtonVariant, Routes } from "@/types/enums";
 import { formatPrice } from "@/utils/helpers";
@@ -35,20 +36,8 @@ const ProductDetail = () => {
 
   if (isLoading) {
     return (
-      <div
-        className={styles.page}
-        aria-busy="true"
-        aria-label="Učitavanje proizvoda"
-      >
-        <div className={styles.skeletonDetail}>
-          <div className={styles.skeletonImage} />
-          <div>
-            <div className={clsx(styles.skeletonText, styles.wide)} />
-            <div className={styles.skeletonText} />
-            <div className={styles.skeletonText} />
-            <div className={clsx(styles.skeletonText, styles.short)} />
-          </div>
-        </div>
+      <div className={styles.page}>
+        <ProductDetailSkeleton />
       </div>
     );
   }

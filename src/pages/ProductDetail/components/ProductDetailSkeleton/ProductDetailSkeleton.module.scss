@@ -1,0 +1,30 @@
+@use "@/styles/mixins" as *;
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.detailImage {
+  border-radius: var(--radius-md);
+}
+
+.detailBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.detailTitle {
+  height: var(--space-xl);
+  width: 70%;
+}
+
+.short {
+  width: 45%;
+}
