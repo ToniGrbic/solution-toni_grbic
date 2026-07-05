@@ -18,7 +18,11 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
+
   const favorited = isFavorite(product.id);
+  const favoritedAriaLabel = favorited
+    ? `Ukloni ${product.title} iz favorita`
+    : `Dodaj ${product.title} u favorite`;
 
   const handleFavorite = (event: MouseEvent) => {
     event.preventDefault();
@@ -63,11 +67,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 type="button"
                 className={clsx(styles.favorite, favorited && styles.active)}
                 onClick={handleFavorite}
-                aria-label={
-                  favorited
-                    ? `Ukloni ${product.title} iz favorita`
-                    : `Dodaj ${product.title} u favorite`
-                }
+                aria-label={favoritedAriaLabel}
                 aria-pressed={favorited}
               >
                 {favorited ? <IoHeart /> : <IoHeartOutline />}
