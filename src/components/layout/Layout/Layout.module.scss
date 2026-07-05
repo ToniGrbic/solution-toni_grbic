@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as *;
+
 .skipLink {
   position: absolute;
   top: -100%;
@@ -28,7 +30,7 @@
   margin: 0 auto;
   padding: var(--space-md);
 
-  @media (min-width: 768px) {
+  @include respond-to(md) {
     padding: var(--space-lg);
   }
 }

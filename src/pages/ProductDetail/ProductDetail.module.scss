@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as *;
+
 .page {
   display: flex;
   flex-direction: column;
@@ -13,12 +15,12 @@
   grid-template-columns: 1fr;
   gap: var(--space-xl);
 
-  @media (min-width: 768px) {
+  @include respond-to(md) {
     grid-template-columns: 1fr 1fr;
     align-items: start;
   }
 
-  @media (min-width: 1024px) {
+  @include respond-to(lg) {
     grid-template-columns: 1.1fr 0.9fr;
   }
 }
@@ -91,7 +93,7 @@
   grid-template-columns: 1fr;
   gap: var(--space-xl);
 
-  @media (min-width: 768px) {
+  @include respond-to(md) {
     grid-template-columns: 1fr 1fr;
   }
 }
